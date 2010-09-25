@@ -1,7 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  id: 1
   firstName: MyString
   lastName: MyString
   landlinePhone: MyString
@@ -9,7 +8,6 @@ one:
   email: MyString
 
 two:
-  id: 1
   firstName: MyString
   lastName: MyString
   landlinePhone: MyString
