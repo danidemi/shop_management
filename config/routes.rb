@@ -1,4 +1,6 @@
 ShopManagement::Application.routes.draw do
+  resources :meetings
+
   resources :customers
 
   # The priority is based upon order of creation:

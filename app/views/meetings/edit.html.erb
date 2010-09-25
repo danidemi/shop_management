@@ -1,0 +1,33 @@
+<h1>Editing meeting</h1>
+
+<%= render 'form' %>
+
+<%= form_for @meeting do |form| %>
+
+	<div class="field">
+		<%= form.label :customer %><br />
+		<%= form.select :customer_id, @customers.collect{|c| [c.firstName + " " + c.lastName, c.id]} %><br />
+	</div>
+
+	<div class="field">
+		<%= form.label :start %><br />
+		<%= form.datetime_select :start %><br />
+	</div>
+
+	<div class="field">
+		<%= form.label :end %><br />
+		<%= form.datetime_select :end %><br />
+	</div>
+
+	<div class="field">
+		<%= form.label :notes %><br />
+		<%= form.text_area :notes %><br />
+	</div>
+
+	<%= submit_tag "Update Meeting" %>
+
+<% end %>
+
+
+<%= link_to 'Show', @meeting %> |
+<%= link_to 'Back', meetings_path %>
