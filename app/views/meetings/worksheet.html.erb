@@ -1,0 +1,27 @@
+<h2 id="month">  
+	<%= link_to "<", :date => (@date.-1).strftime("%Y-%m-%d") %>  
+	<%= h @date.strftime("%A %d/%m/%Y") %>  
+	<%= link_to ">", :date => (@date.+1).strftime("%Y-%m-%d") %>  
+</h2> 
+
+<table border="1">
+	<% @worksheets.each do |worksheet| %>
+		<tr>
+			<td><%= worksheet[:start].strftime("%H:%M") %>-<%= worksheet[:end].strftime("%H:%M") %></td>
+    		<td>
+				<% if worksheet[:meetings] != nil %>
+					<% worksheet[:meetings].each do |meeting| %>
+						<table border="0">
+							<tr>
+								<td><%= meeting.start.strftime("%H:%M") %></td>
+								<td><%= meeting.customer.firstName %><%= meeting.customer.lastName %></td>
+								<td><%= meeting.notes %>
+								</td>
+							</tr>
+						</table>
+					<% end %>
+				<% end%>
+			</td>
+		</tr>
+	<% end %>
+</table>

@@ -1,7 +1,8 @@
 ShopManagement::Application.routes.draw do
-  resources :meetings
+	match 'meetings/worksheet' => 'meetings#worksheet'		
+	resources :meetings
 
-  resources :customers
+	resources :customers
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

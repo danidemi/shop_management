@@ -1,0 +1,30 @@
+<h2 id="month">  
+	<%= link_to "<", :date => (@date.-1).strftime("%Y-%m-%d") %>  
+	<%= h @date.strftime("%A %d/%m/%Y") %>  
+	<%= link_to ">", :date => (@date.+1).strftime("%Y-%m-%d") %>  
+</h2> 
+
+<table border="1">
+<% @hour = 8
+while @hour < 18 do %>
+	<tr>
+		<td><%=@hour%></td>
+		<td>app</td>
+	</tr>
+<% @hour = @hour + 1
+end %>
+</table>
+
+<table>
+	<% @meetings.each do |meeting| %>
+		<tr>
+    		<td><%= meeting.customer.firstName %><%= meeting.customer.lastName %></td>
+    		<td><%= meeting.start %></td>
+    		<td><%= meeting.end %></td>
+    		<td><%= meeting.notes %></td>
+    		<td><%= link_to 'Show', meeting %></td>
+    		<td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+    		<td><%= link_to 'Destroy', meeting, :confirm => 'Are you sure?', :method => :delete %></td>
+  		</tr>
+	<% end %>
+</table>
