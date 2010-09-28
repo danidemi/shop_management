@@ -4,10 +4,31 @@
 	<%= link_to ">", :date => (@date.+1).strftime("%Y-%m-%d") %>  
 </h2> 
 
+<script type="text/javascript">
+	//<![CDATA[
+	function newMeeting(){
+		window.alert('ciao');
+		document.location='/meetings/new';
+		param = 
+			"meeting[start(1i)]=" + 2010 + 
+			"&meeting[start(2i)]=" + 9 +
+			"&meeting[start(3i)]=" + 27 + 
+			"&meeting[start(4i)]=" + 21 + 
+			"&meeting[start(5i)]=" + 16 + 
+			"&meeting[end(1i)]=" + 2010 + 
+			"&meeting[end(2i)]=" + 9 + 
+			"&meeting[end(3i)]=" + 27 + 
+			"&meeting[end(4i)]=" + 21 + 
+			"&meeting[end(5i)]=" + 16;
+	}
+	//]]>
+</script>
+
+
 <table border="1">
 	<% @worksheets.each do |worksheet| %>
 		<tr>
-			<td><%= worksheet[:start].strftime("%H:%M") %>-<%= worksheet[:end].strftime("%H:%M") %></td>
+			<td onClick="newMeeting()"><%= worksheet[:start].strftime("%H:%M") %>-<%= worksheet[:end].strftime("%H:%M") %></td>
     		<td>
 				<% if worksheet[:meetings] != nil %>
 					<% worksheet[:meetings].each do |meeting| %>

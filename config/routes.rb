@@ -1,8 +1,15 @@
 ShopManagement::Application.routes.draw do
+
+	# Meetings
 	match 'meetings/worksheet' => 'meetings#worksheet'		
 	resources :meetings
 
+	# Customers
 	resources :customers
+
+	# Home
+	root :to => "welcome#index"
+	get "welcome/index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
