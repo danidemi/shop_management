@@ -38,6 +38,20 @@ class MeetingsController < ApplicationController
     	end
 	end
 
+	def new_from_worksheet
+    @customers = Customer.all
+
+		@meeting = Meeting.new
+		if params[:start] != nil then
+			@meeting.start = DateTime.parse( params[:start] )
+		end
+		if params[:end] then
+			@meeting.end = DateTime.parse( params[:end] )
+		end
+
+		render :action => :new
+	end
+
   # GET /meetings
   # GET /meetings.xml
   def index
@@ -63,8 +77,17 @@ class MeetingsController < ApplicationController
   # GET /meetings/new
   # GET /meetings/new.xml
   def new
-	@meeting = Meeting.new
+		puts "cccccc"
     @customers = Customer.all
+
+		@meeting = Meeting.new
+		if @start != nil then
+			@meeting.start = @start if @start != nil
+		end
+		if @end != nil then
+			@meeting.end = @end 
+		end
+		logger.info "xxxxxxxxxx" + @meeting.start.to_s
 
     respond_to do |format|
       format.html # new.html.erb

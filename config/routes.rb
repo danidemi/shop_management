@@ -1,7 +1,8 @@
 ShopManagement::Application.routes.draw do
 
 	# Meetings
-	match 'meetings/worksheet' => 'meetings#worksheet'		
+	match 'meetings/worksheet' => 'meetings#worksheet'
+	match 'meetings/new_from_worksheet' => 'meetings#new_from_worksheet'				
 	resources :meetings
 
 	# Customers
