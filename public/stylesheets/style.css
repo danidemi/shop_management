@@ -1,3 +1,19 @@
+#worksheet {
+	border: 2px solid black;
+	border-collapse:collapse;
+}
+
+#worksheet td {
+	border: 1px solid black;
+	padding:2px;
+}
+
+#worksheet .meeting {
+	background-color: #DFD;
+	border: 1px solid green;
+	margin: 2px;
+}
+
 #header {
 	font-family: arial, helvetica, sans-serif;
 	color: green;

@@ -14,7 +14,7 @@
 </script>
 
 
-<table border="1">
+<table id="worksheet">
 	<% @worksheets.each do |worksheet| %>
 		<tr>
 			<!--
@@ -27,14 +27,11 @@
     		<td width="70%">
 				<% if worksheet[:meetings] != nil %>
 					<% worksheet[:meetings].each do |meeting| %>
-						<table border="0">
-							<tr>
-								<td><%= meeting.start.strftime("%H:%M") %></td>
-								<td><%= meeting.customer.firstName %><%= meeting.customer.lastName %></td>
-								<td><%= meeting.notes %>
-								</td>
-							</tr>
-						</table>
+						<div class="meeting">
+							<%= meeting.start.strftime("%H:%M") %>
+							<%= meeting.customer.firstName %><%= meeting.customer.lastName %>
+							<%= meeting.notes %>
+						</div>
 					<% end %>
 				<% end%>
 			</td>
