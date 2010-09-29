@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ShopManagement</title>
+  <title>Shop Appointment - Studio Ingegneria Demichelis</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
 
-<div>
-<%= link_to 'Customers', customers_path %>
-|<%= link_to 'Meetings', meetings_path %>
-|<a href="/meetings/worksheet">Worksheet</a>
+<div id="header">
+	Shop Appointment <small>...customers won't forget you...</small>
 </div>
+<div id="menu_container">
+	<ul id="menu_list">
+		<li><%= link_to 'Customers', customers_path %></li>
+		<li><%= link_to 'Meetings', meetings_path %></li>
+		<li><a href="/meetings/worksheet">Worksheet</a></li>
+	</ul>
+</menu>
 
 <%= yield %>
 
