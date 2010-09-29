@@ -4,14 +4,23 @@
 }
 
 #worksheet td {
+	vertical-align: top;
 	border: 1px solid black;
 	padding:2px;
+	width:100px;
 }
 
 #worksheet .meeting {
 	background-color: #DFD;
 	border: 1px solid green;
 	margin: 2px;
+	padding: 2px;
+}
+
+#worksheet .time {
+	margin: 2px;
+	padding: 2px;
+	font-family: monospace;
 }
 
 #header {

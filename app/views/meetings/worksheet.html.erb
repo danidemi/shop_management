@@ -21,10 +21,11 @@
 			<td onClick="newMeeting(2010, 1, 1, 20, 30, 21, 45);">
 			-->
 			<td onClick="newMeeting('<%= worksheet[:start] %>', '<%= worksheet[:end] %>');">
-
-
-				<%= worksheet[:start].strftime("%H:%M") %>-<%= worksheet[:end].strftime("%H:%M") %></td>
-    		<td width="70%">
+				<div class="time">
+					<%= worksheet[:start].strftime("%H:%M") %>-<%= worksheet[:end].strftime("%H:%M") %>
+				<div>
+			</td>
+    	<td>
 				<% if worksheet[:meetings] != nil %>
 					<% worksheet[:meetings].each do |meeting| %>
 						<div class="meeting">
