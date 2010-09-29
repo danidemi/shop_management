@@ -1,7 +1,7 @@
 <h2 id="month">  
-	<%= link_to "<", :date => (@date.-1).strftime("%Y-%m-%d") %>  
+	<%= link_to image_tag("icon_previous.png", :border => 0), :date => (@date.-1).strftime("%Y-%m-%d") %>  
 	<%= h @date.strftime("%A %d/%m/%Y") %>  
-	<%= link_to ">", :date => (@date.+1).strftime("%Y-%m-%d") %>  
+	<%= link_to image_tag("icon_next.png", :border => 0), :date => (@date.+1).strftime("%Y-%m-%d") %>  
 </h2> 
 
 <script type="text/javascript">
