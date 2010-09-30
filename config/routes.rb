@@ -1,4 +1,12 @@
 ShopManagement::Application.routes.draw do
+	
+	# Login
+	resources :operators
+  #map.login 'login', :controller => 'operator_sessions' , :action => 'new'  
+  #map.logout 'logout', :controller => 'operator_sessions', :action => 'destroy'  
+	match 'login' => 'operator_sessions#new'
+	match 'logout' => 'operator_sessions#destroy'
+	resources :operator_sessions  
 
 	# Meetings
 	match 'meetings/worksheet' => 'meetings#worksheet'

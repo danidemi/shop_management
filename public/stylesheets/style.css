@@ -1,3 +1,7 @@
+#operator_nav {
+	float: right;
+}
+
 #worksheet {
 	border: 2px solid black;
 	border-collapse:collapse;
