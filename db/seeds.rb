@@ -6,60 +6,85 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-c1 = Customer.create(
-	:firstName => "Carla", 
-	:lastName => "Rossi", 
-	:landlinePhone => "+39021111111", 
-	:mobilePhone => "+39022222222", 
-	:email => "mail@mail.com")
+companies = [] 
 
-c2 = Customer.create(
-	:firstName => "Susy", 
-	:lastName => "Lambrusco", 
-	:landlinePhone => "+39061111111", 
-	:mobilePhone => "+39062222222", 
-	:email => "indi@riz.zo")
-
-c3 = Customer.create(
-	:firstName => "Giovanna", 
-	:lastName => "Tutta Panna", 
-	:landlinePhone => "+39031111111", 
-	:mobilePhone => "+39032222222", 
-	:email => "posta@elettro.ni.ca"
+companies << Company.create(
+	:name => "Unghie Belle s.r.l."
 )
 
-Meeting.create(
-	:start => "2010-09-27 11:30:00",
-	:end => "2010-09-27 12:30:00",
-	:customer_id => c1.id,
-	:notes => "Unghie"
+companies << Company.create(
+	:name => "Riparazioni Rapide s.n.c."
 )
 
-Meeting.create(
-	:start => "2010-09-27 16:30:00",
-	:end => "2010-09-27 16:30:00",
-	:customer_id => c1.id,
-	:notes => "Capelli"
-)
+companies.each do |company|
 
-Meeting.create(
-	:start => "2010-09-27 11:00:00",
-	:end => "2010-09-27 12:00:00",
-	:customer_id => c2.id,
-	:notes => "Decorazione"
-)
+	c1 = Customer.create(
+		:company_id => company.id,
+		:firstName => "Carla " + company.name, 
+		:lastName => "Rossi", 
+		:landlinePhone => "+39021111111", 
+		:mobilePhone => "+39022222222", 
+		:email => "mail@mail.com")
 
-Meeting.create(
-	:start => "2010-09-28 11:00:00",
-	:end => "2010-09-28 12:00:00",
-	:customer_id => c2.id,
-	:notes => "Decorazione x Martimonio"
-)
+	c2 = Customer.create(
+		:company_id => company.id,
+		:firstName => "Susy " + company.name, 
+		:lastName => "Lambrusco", 
+		:landlinePhone => "+39061111111", 
+		:mobilePhone => "+39062222222", 
+		:email => "indi@riz.zo")
 
-Meeting.create(
-	:start => "2010-09-28 16:00:00",
-	:end => "2010-09-28 17:00:00",
-	:customer_id => c3.id,
-	:notes => "Unghie"
-)
+	c3 = Customer.create(
+		:company_id => company.id,
+		:firstName => "Giovanna " + company.name, 
+		:lastName => "Tutta Panna", 
+		:landlinePhone => "+39031111111", 
+		:mobilePhone => "+39032222222", 
+		:email => "posta@elettro.ni.ca"
+	)
+
+	Meeting.create(
+		:company_id => company.id,
+		:customer_id => c1.id,
+		:start => "2010-09-27 11:30:00",
+		:end => "2010-09-27 12:30:00",
+		:notes => "Unghie"
+	)
+
+	Meeting.create(
+		:company_id => company.id,
+		:customer_id => c1.id,
+		:start => "2010-09-27 16:30:00",
+		:end => "2010-09-27 16:30:00",
+		:notes => "Capelli"
+	)
+
+	Meeting.create(
+		:company_id => company.id,
+		:customer_id => c2.id,
+		:start => "2010-09-27 11:00:00",
+		:end => "2010-09-27 12:00:00",
+		:notes => "Decorazione"
+	)
+
+	Meeting.create(
+		:company_id => company.id,
+		:customer_id => c2.id,
+		:start => "2010-09-28 11:00:00",
+		:end => "2010-09-28 12:00:00",
+		:notes => "Decorazione x Martimonio"
+	)
+
+	Meeting.create(
+		:company_id => company.id,
+		:customer_id => c3.id,
+		:start => "2010-09-28 16:00:00",
+		:end => "2010-09-28 17:00:00",
+		:notes => "Unghie"
+	)
+
+
+end
+
+
 
