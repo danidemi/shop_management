@@ -7,8 +7,7 @@ class CreateOperators < ActiveRecord::Migration
 			t.string :persistence_token
       t.string :first_name
       t.string :last_name
-      t.references :company
-
+#      t.references :company
       t.timestamps
     end
   end

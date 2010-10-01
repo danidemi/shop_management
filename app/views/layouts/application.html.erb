@@ -22,16 +22,10 @@
 
 <div id="operator_nav">
 	<% if current_operator %>  
-		<%= link_to "Edit profile", edit_operator_path(:current) %>  
-		<%= link_to "Logout", logout_path %>  
+		<%= link_to "Edit profile", edit_operator_path(:current) %> | <%= link_to "Log out", logout_path %>  
 	<% else %>  
-		<%= link_to "Register", new_operator_path %>  
-		<%= link_to "Log in", login_path %>  
+		<%= link_to "Register", new_operator_path %> | <%= link_to "Log in", login_path %>  
 	<% end %>  
-</div>
-
-<div>
-<%= flash[:notice] %>
 </div>
 
 <%= yield %>

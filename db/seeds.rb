@@ -8,12 +8,32 @@
 
 companies = [] 
 
-companies << Company.create(
+company1 = Company.create(
 	:name => "Unghie Belle s.r.l."
 )
+companies << company1
 
-companies << Company.create(
+company2 = Company.create(
 	:name => "Riparazioni Rapide s.n.c."
+)
+companies << company2
+
+operator1 = Operator.create(
+	:username	=> "usr1",
+	:password	=> "pwd1",
+	:password_confirmation	=> "pwd1",
+	:first_name => "John",
+	:last_name => "Doe",
+	:company_id => company1.id
+)
+
+operator2 = Operator.create(
+	:username	=> "usr1",
+	:password	=> "pwd1",
+	:password_confirmation	=> "pwd1",
+	:first_name => "John",
+	:last_name => "Doe",
+	:company_id => company2.id
 )
 
 companies.each do |company|
@@ -83,8 +103,4 @@ companies.each do |company|
 		:notes => "Unghie"
 	)
 
-
 end
-
-
-
