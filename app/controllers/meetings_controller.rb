@@ -45,7 +45,7 @@ class MeetingsController < ApplicationController
 	end
 
 	def new_from_worksheet
-    @customers = Customer.all
+		@customers = Customer.joins(:company).where(:companies => {:id => current_operator.company.id})
 
 		@meeting = Meeting.new
 		if params[:start] != nil then

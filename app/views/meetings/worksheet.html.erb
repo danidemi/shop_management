@@ -29,9 +29,15 @@
 				<% if worksheet[:meetings] != nil %>
 					<% worksheet[:meetings].each do |meeting| %>
 						<div class="meeting">
-							<%= meeting.start.strftime("%H:%M") %>
-							<%= meeting.customer.firstName %><%= meeting.customer.lastName %>
-							<%= meeting.notes %>
+							<div>
+								<%= meeting.start.strftime("%H:%M") %> - <%= meeting.end.strftime("%H:%M") %>
+							</div>
+							<div>
+								<%= meeting.customer.firstName %><%= meeting.customer.lastName %>
+							</div>
+							<div>
+								<%= meeting.notes %>
+							</div>
 						</div>
 					<% end %>
 				<% end%>
