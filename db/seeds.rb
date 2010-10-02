@@ -28,10 +28,10 @@ operator1 = Operator.create(
 )
 
 operator2 = Operator.create(
-	:username	=> "usr1",
-	:password	=> "pwd1",
-	:password_confirmation	=> "pwd1",
-	:first_name => "John",
+	:username	=> "usr2",
+	:password	=> "pwd2",
+	:password_confirmation	=> "pwd2",
+	:first_name => "Jean",
 	:last_name => "Doe",
 	:company_id => company2.id
 )

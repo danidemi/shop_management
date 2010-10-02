@@ -12,23 +12,30 @@
 	Shop Appointment <small>...customers won't forget you...</small>
 </div>
 
-<div id="menu_container">
-	<ul id="menu_list">
-		<li><%= link_to 'Customers', customers_path %></li>
-		<li><%= link_to 'Meetings', meetings_path %></li>
-		<li><a href="/meetings/worksheet">Worksheet</a></li>
-	</ul>
-</div>
+	<div id="menu_container">
+		<ul id="menu_list">
+			<li><%= link_to 'Customers', customers_path %></li>
+			<li><%= link_to 'Meetings', meetings_path %></li>
+			<li><a href="/meetings/worksheet">Worksheet</a></li>
+		</ul>
+	</div>
 
-<div id="operator_nav">
-	<% if current_operator %>  
-		<%= link_to "Edit profile", edit_operator_path(:current) %> | <%= link_to "Log out", logout_path %>  
-	<% else %>  
-		<%= link_to "Register", new_operator_path %> | <%= link_to "Log in", login_path %>  
-	<% end %>  
-</div>
+	<div id="operator_nav">
+		<% if current_operator %>
+			<%= current_operator.first_name %> <%= current_operator.last_name %>, <%= current_operator.company.name %>  
+			<%= link_to "Edit profile", edit_operator_path(:current) %> | <%= link_to "Log out", logout_path %>  
+		<% else %>  
+			<%= form_for OperatorSession.new do |form| %>    
+						<%= form.text_field :username, :size => 10 %>  
+						<%= form.password_field :password, :size =>10 %>  
+						<%= form.submit "Log In" %>  
+			<% end %> 
+		<% end %>  
+	</div>
 
+<div>
 <%= yield %>
+</div>
 
 </body>
 </html>

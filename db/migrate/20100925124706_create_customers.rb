@@ -1,9 +1,9 @@
 class CreateCustomers < ActiveRecord::Migration
   def self.up
     create_table :customers do |t|
-			t.references :company
-      t.string :firstName
-      t.string :lastName
+			t.references :company, :null => false
+      t.string :firstName, :null => false
+      t.string :lastName, :null => false
       t.string :landlinePhone
       t.string :mobilePhone
       t.string :email
