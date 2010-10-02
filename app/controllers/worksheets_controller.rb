@@ -2,16 +2,11 @@ class WorksheetsController < ApplicationController
 
 	def build_worksheet(a_date)
 
-		logger.info "Building worksheet for date " + a_date.to_s
-
 		# Compute start and end of the day
 		day_start = DateTime.parse(a_date.to_s)
 		day_end = day_start
 		day_start = day_start.advance :hours=>8
 		day_end = day_end.advance :hours=>18
-
-		logger.info "day_start " + day_start.to_s
-		logger.info "day_end " + day_end.to_s
 
 		# Prepare the worksheet data structure
 		increment_field = :minutes
@@ -23,9 +18,6 @@ class WorksheetsController < ApplicationController
 
 			interval_start = day_start
 			interval_end = interval_start.advance( increment_field => increment_amount )
-
-			logger.info "interval_start " + interval_start.to_s
-			logger.info "interval_end " + interval_end.to_s
 
 			meetings = Meeting \
 				.joins(:company) \
@@ -45,42 +37,50 @@ class WorksheetsController < ApplicationController
 	end
 
 	def worksheet
-
 		@date = params[:date] ? Date.parse(params[:date]) : Date.today
+		@worksheets = build_worksheet( @date )
+		@operators = Operator.select(:first_name, :last_name).joins(:company).where(:companies => {:id => current_operator.company.id})
 
-		# Compute start and end of the day.
-		day_start = DateTime.parse(@date.to_s)
-		day_end = day_start
-		day_start = day_start.advance :hours=>8
-		day_end = day_end.advance :hours=>18
+    respond_to do |format|
+    		format.html # index.html.erb
+    		format.xml  { render :xml => @meetings }
+  	end
 
-		# Prepare the worksheet data structure.
-		increment_field = :minutes
-		increment_amount = 30
-		@worksheets = Array.new
-		while day_start < day_end do
+#		@date = params[:date] ? Date.parse(params[:date]) : Date.today
 
-			interval_start = day_start
-			interval_end = interval_start.advance( increment_field => increment_amount )
+#		# Compute start and end of the day.
+#		day_start = DateTime.parse(@date.to_s)
+#		day_end = day_start
+#		day_start = day_start.advance :hours=>8
+#		day_end = day_end.advance :hours=>18
 
-			meetings = Meeting \
-				.joins(:company) \
-				.where(:companies => {:id => current_operator.company.id}) \
-				.where([":start < start AND start < :end", {:start => interval_start, :end => interval_end}]) \
-				.order(:start)		
+#		# Prepare the worksheet data structure.
+#		increment_field = :minutes
+#		increment_amount = 30
+#		@worksheets = Array.new
+#		while day_start < day_end do
 
-			@worksheets << {
-				:start => interval_start, 
-				:end => interval_end,
-				:meetings=>meetings}
+#			interval_start = day_start
+#			interval_end = interval_start.advance( increment_field => increment_amount )
 
-			day_start = interval_end
-		end
+#			meetings = Meeting \
+#				.joins(:company) \
+#				.where(:companies => {:id => current_operator.company.id}) \
+#				.where([":start < start AND start < :end", {:start => interval_start, :end => interval_end}]) \
+#				.order(:start)		
 
-	    respond_to do |format|
-      		format.html # index.html.erb
-      		format.xml  { render :xml => @meetings }
-    	end
+#			@worksheets << {
+#				:start => interval_start, 
+#				:end => interval_end,
+#				:meetings=>meetings}
+
+#			day_start = interval_end
+#		end
+
+#	    respond_to do |format|
+#      		format.html # index.html.erb
+#      		format.xml  { render :xml => @meetings }
+#    	end
 	end
 
 	def new_from_worksheet
@@ -94,18 +94,18 @@ class WorksheetsController < ApplicationController
 			@meeting.end = DateTime.parse( params[:end] )
 		end
 
-		#render :controller => :meetings, :action => :new
 	end
 
 	def create_into_worksheet
     @meeting = Meeting.new(params[:meeting])
 		@meeting.company = current_operator.company
-		logger.info "aaaaaaaaaaaaa"
 
 		if @meeting.save
 			@worksheets = build_worksheet Date.parse(@meeting.start.to_s)
-			logger.info @worksheets.size
 			@date = Date.parse(@meeting.start.to_s)
+			@operators = Operator.select(:first_name, :last_name) \
+				.joins(:company) \
+				.where(:companies => {:id => current_operator.company.id})
 			render :action => "worksheet"
 		else
 			render :action => "new_from_worksheet"

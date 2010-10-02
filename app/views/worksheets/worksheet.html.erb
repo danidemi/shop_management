@@ -14,6 +14,17 @@
 </h2> 
 
 <table id="worksheet">
+
+	<thead>
+		<tr>
+			<th>Time</th>
+			<% @operators.each do |operator| %>
+				<th><%= operator.first_name %> <%= operator.last_name %></th>
+			<% end %>
+		</tr>
+	</thead>
+
+	<tbody>
 	<% @worksheets.each do |worksheet| %>
 		<tr>
 			<td onClick="newMeeting('<%= worksheet[:start] %>', '<%= worksheet[:end] %>');">
@@ -40,4 +51,6 @@
 			</td>
 		</tr>
 	<% end %>
+	</tbody>
+
 </table>

@@ -33,6 +33,15 @@ operator2 = Operator.create(
 	:password_confirmation	=> "pwd2",
 	:first_name => "Jean",
 	:last_name => "Doe",
+	:company_id => company1.id
+)
+
+operator3 = Operator.create(
+	:username	=> "usr3",
+	:password	=> "pwd3",
+	:password_confirmation	=> "pwd3",
+	:first_name => "Galileo",
+	:last_name => "Galilei",
 	:company_id => company2.id
 )
 
