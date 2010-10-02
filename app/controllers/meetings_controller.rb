@@ -19,10 +19,16 @@ class MeetingsController < ApplicationController
 			interval_start = day_start
 			interval_end = interval_start.advance( increment_field => increment_amount )
 
-			meetings = Meeting.where([
-				":start < start AND start < :end", 
-				{:start => interval_start, :end => interval_end}
-			]).order("start")		
+#			meetings = Meeting.where([
+#				":start < start AND start < :end", 
+#				{:start => interval_start, :end => interval_end}
+#			]).order("start")		
+
+			meetings = Meeting \
+				.joins(:company) \
+				.where(:companies => {:id => current_operator.company.id}) \
+				.where([":start < start AND start < :end", {:start => interval_start, :end => interval_end}]) \
+				.order(:start)		
 
 			@worksheets << {
 				:start => interval_start, 
@@ -55,7 +61,8 @@ class MeetingsController < ApplicationController
   # GET /meetings
   # GET /meetings.xml
   def index
-    @meetings = Meeting.all
+
+    @meetings = Meeting.joins(:company).where(:companies => {:id => current_operator.company.id})
 
     respond_to do |format|
       format.html # index.html.erb
@@ -77,8 +84,7 @@ class MeetingsController < ApplicationController
   # GET /meetings/new
   # GET /meetings/new.xml
   def new
-		puts "cccccc"
-    @customers = Customer.all
+		@customers = Customer.joins(:company).where(:companies => {:id => current_operator.company.id})
 
 		@meeting = Meeting.new
 		if @start != nil then
@@ -105,6 +111,7 @@ class MeetingsController < ApplicationController
   # POST /meetings.xml
   def create
     @meeting = Meeting.new(params[:meeting])
+		@meeting.company = current_operator.company
 
     respond_to do |format|
       if @meeting.save
