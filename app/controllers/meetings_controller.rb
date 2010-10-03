@@ -27,6 +27,7 @@ class MeetingsController < ApplicationController
   # GET /meetings/new.xml
   def new
 		@customers = Customer.joins(:company).where(:companies => {:id => current_operator.company.id})
+		@operators = Operator.joins(:company).where(:companies => {:id => current_operator.company.id})
 
 		@meeting = Meeting.new
 		if @start != nil then
@@ -45,7 +46,8 @@ class MeetingsController < ApplicationController
 
   # GET /meetings/1/edit
   def edit
-	@customers = Customer.all
+		@customers = Customer.all
+		@operators = Operator.joins(:company).where(:companies => {:id => current_operator.company.id})
     @meeting = Meeting.find(params[:id])
   end
 

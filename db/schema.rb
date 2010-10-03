@@ -10,18 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100930211017) do
+ActiveRecord::Schema.define(:version => 20100925130208) do
 
   create_table "companies", :force => true do |t|
-    t.string   "name"
+    t.string   "name",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "customers", :force => true do |t|
-    t.integer  "company_id"
-    t.string   "firstName"
-    t.string   "lastName"
+    t.integer  "company_id",    :null => false
+    t.string   "firstName",     :null => false
+    t.string   "lastName",      :null => false
     t.string   "landlinePhone"
     t.string   "mobilePhone"
     t.string   "email"
@@ -30,23 +30,24 @@ ActiveRecord::Schema.define(:version => 20100930211017) do
   end
 
   create_table "meetings", :force => true do |t|
-    t.integer  "company_id"
-    t.integer  "customer_id"
-    t.datetime "start"
-    t.datetime "end"
+    t.integer  "company_id",  :null => false
+    t.integer  "customer_id", :null => false
+    t.integer  "operator_id", :null => false
+    t.datetime "start",       :null => false
+    t.datetime "end",         :null => false
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "operators", :force => true do |t|
-    t.string   "username"
-    t.string   "crypted_password"
-    t.string   "password_salt"
-    t.string   "persistence_token"
-    t.string   "first_name"
-    t.string   "last_name"
     t.integer  "company_id"
+    t.string   "username",          :null => false
+    t.string   "crypted_password",  :null => false
+    t.string   "password_salt",     :null => false
+    t.string   "persistence_token"
+    t.string   "first_name",        :null => false
+    t.string   "last_name",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -19,6 +19,11 @@
 	</div>
 
 	<div class="field">
+		<%= form.label :operator %><br />
+		<%= form.select :operator_id, @operators.collect{|o| [o.first_name + " " + o.last_name, o.id]} %><br />
+	</div>
+
+	<div class="field">
 		<%= form.label :start %><br />
 		<%= form.datetime_select :start %><br />
 	</div>
