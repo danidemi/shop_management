@@ -1,0 +1,56 @@
+<script type="text/javascript">
+	//<![CDATA[
+	function newMeeting(start, end){	
+		document.location = "/worksheets/new_meeting?" + "start=" + start + "&end=" + end;
+	}
+
+	//]]>
+</script>
+
+<h2 id="month">  
+	<%= link_to image_tag("icon_previous.png", :border => 0), :action => "worksheet", :date => (@date.-1).strftime("%Y-%m-%d") %>  
+	<%= h @date.strftime("%A %d/%m/%Y") %>  
+	<%= link_to image_tag("icon_next.png", :border => 0), :action => "worksheet", :date => (@date.+1).strftime("%Y-%m-%d") %>  
+</h2> 
+
+<table id="worksheet">
+
+	<thead>
+		<tr>
+			<th>Time</th>
+			<% @operators.each do |operator| %>
+				<th><%= operator.first_name %> <%= operator.last_name %></th>
+			<% end %>
+		</tr>
+	</thead>
+
+	<tbody>
+	<% @worksheets.each do |worksheet| %>
+		<tr>
+			<td onClick="newMeeting('<%= worksheet[:start] %>', '<%= worksheet[:end] %>');">
+				<div class="time">
+					<%= worksheet[:start].strftime("%H:%M") %>-<%= worksheet[:end].strftime("%H:%M") %>
+				<div>
+			</td>
+    	<td>
+				<% if worksheet[:meetings] != nil %>
+					<% worksheet[:meetings].each do |meeting| %>
+						<div class="meeting">
+							<div>
+								<%= meeting.start.strftime("%H:%M") %> - <%= meeting.end.strftime("%H:%M") %>
+							</div>
+							<div>
+								<%= meeting.customer.firstName %><%= meeting.customer.lastName %>
+							</div>
+							<div>
+								<%= meeting.notes %>
+							</div>
+						</div>
+					<% end %>
+				<% end%>
+			</td>
+		</tr>
+	<% end %>
+	</tbody>
+
+</table>

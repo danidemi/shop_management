@@ -13,44 +13,62 @@
 	<%= link_to image_tag("icon_next.png", :border => 0), :action => "worksheet", :date => (@date.+1).strftime("%Y-%m-%d") %>  
 </h2> 
 
+<pre>
+worksheet:
+<%= @worksheet.to_s %>
+operators:
+<% @worksheet.operators do |operator| %>
+	<%= operator.first_name %> <%= operator.last_name %>
+<% end %>
+<%= @worksheet.operators.to_s %>
+time_intervals
+XX <%= @worksheet.time_intervals.to_s %>
+YY <% @worksheet.time_intervals do |k| %>
+	[<%= k.to_s %>]
+<% end %>
+</pre>
+
 <table id="worksheet">
 
 	<thead>
-		<tr>
-			<th>Time</th>
-			<% @operators.each do |operator| %>
-				<th><%= operator.first_name %> <%= operator.last_name %></th>
-			<% end %>
-		</tr>
+		<th></th>
+		<% @worksheet.operators do |operator| %>
+			<th><%= operator.first_name %> <%= operator.last_name %></th>
+		<% end %>
 	</thead>
 
 	<tbody>
-	<% @worksheets.each do |worksheet| %>
-		<tr>
-			<td onClick="newMeeting('<%= worksheet[:start] %>', '<%= worksheet[:end] %>');">
-				<div class="time">
-					<%= worksheet[:start].strftime("%H:%M") %>-<%= worksheet[:end].strftime("%H:%M") %>
-				<div>
-			</td>
-    	<td>
-				<% if worksheet[:meetings] != nil %>
-					<% worksheet[:meetings].each do |meeting| %>
-						<div class="meeting">
-							<div>
-								<%= meeting.start.strftime("%H:%M") %> - <%= meeting.end.strftime("%H:%M") %>
+		<% @worksheet.time_intervals do |time_interval| %>
+
+			<tr>
+
+				<%# Time interval cell %>
+				<td onClick="newMeeting('<%= worksheet[:start] %>', '<%= worksheet[:end] %>');">
+					<div class="time">
+						<%= time_interval[:start].strftime("%H:%M") %> - <%= time_interval[:end].strftime("%H:%M") %>
+					<div>
+				</td>
+
+				<% @worksheet.operators do |operator| %>
+					<td>
+						<% @worksheet.meetings_for(time_interval, operator).each do |meeting| %>
+							<div class="meeting">
+								<div>
+									<%= meeting.start.strftime("%H:%M") %> - <%= meeting.end.strftime("%H:%M") %>
+								</div>
+								<div>
+									<%= meeting.customer.firstName %><%= meeting.customer.lastName %>
+								</div>
+								<div>
+									<%= meeting.notes %>
+								</div>
 							</div>
-							<div>
-								<%= meeting.customer.firstName %><%= meeting.customer.lastName %>
-							</div>
-							<div>
-								<%= meeting.notes %>
-							</div>
-						</div>
-					<% end %>
-				<% end%>
-			</td>
-		</tr>
-	<% end %>
+						<% end %>
+					</td>
+				<% end %>
+
+			</tr>
+		<% end %>
 	</tbody>
 
 </table>
