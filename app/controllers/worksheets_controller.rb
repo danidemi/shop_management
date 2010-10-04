@@ -3,13 +3,9 @@ class Worksheet
 	attr_accessor :operators, :time_intervals
 
 	def build(a_date, company_id)
-		puts "aaaaa"
 
 		# Retrieve the list of operators
-		#@operators = Operator.select(:first_name, :last_name).joins(:company).where(:companies => {:id => current_operator.company.id})
-		#@operators2 = Operator.joins(:company).where(:companies => {:id => company_id})
-#		puts "operators:" + @operators2.size.to_s
-		@operators2 = Operator.all
+		@operators = Operator.joins(:company).where(:companies => {:id => company_id})
 
 		# Compute the list of time intervals
 		day_start = DateTime.parse(a_date.to_s)
@@ -23,31 +19,37 @@ class Worksheet
 		while day_start < day_end do
 			interval_start = day_start
 			interval_end = interval_start.advance( increment_field => increment_amount )
-			@time_intervals[i] = {:start => interval_start, :end => interval_end}
-			i = i + 1
+			@time_intervals << {:start => interval_start, :end => interval_end}
 			day_start = interval_end
 		end
 
 		puts "time_intervals:" + @time_intervals.size.to_s
 
-		@meetings = {}
-		@operators2.each do |operator|
-			@time_intervals.each do |interval|
-				
-				meetings = Meeting \
+		@meetings = Array.new
+		@operators.count.times { |op_index| 
+			@meetings[op_index] = Array.new
+			@time_intervals.count.times { |int_index|
+
+				meets = Meeting \
 					.joins(:company) \
 					.joins(:operator) \
 					.where(:companies => {:id => company_id}) \
-					.where(:operators => {:id => operator.id}) \
-					.where([":start < start AND start < :end", {:start => interval_start, :end => interval_end}]) \
+					.where(:operators => {:id => @operators[op_index].id}) \
+					.where([":start < start AND start < :end", { \
+						:start => @time_intervals[int_index][:start], \
+						:end => @time_intervals[int_index][:end]}]) \
 					.order(:start)		
 
-				puts "#############################################"
-				puts operator.to_s + "," + interval.to_s + "," + meetings.size.to_s
-				@meetings[interval] = {}
-				@meetings[interval][operator] = meetings;
-			end 
-		end
+				@meetings[op_index][int_index] = meets
+
+				puts op_index
+				puts int_index
+				puts meets
+
+			}
+		}		
+
+		puts @meetings.inspect
 
 		return self
 	end
@@ -55,14 +57,6 @@ class Worksheet
 	def meetings_for(time_interval, operator)
 		@meetings[time_interval][operator]
 	end
-
-  def operators
-    @operators2
-  end
-
-  def time_intervals
-    @time_intervals
-  end
 
 end
 
