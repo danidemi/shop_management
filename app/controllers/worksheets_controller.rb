@@ -114,7 +114,7 @@ class WorksheetsController < ApplicationController
 
 	def new_from_worksheet
 		@customers = Customer.joins(:company).where(:companies => {:id => current_operator.company.id})
-		@operators = Operator.select(:first_name, :last_name).joins(:company).where(:companies => {:id => current_operator.company.id})
+		@operators = Operator.joins(:company).where(:companies => {:id => current_operator.company.id})
 
 		@meeting = Meeting.new
 		if params[:start] != nil then
@@ -129,11 +129,9 @@ class WorksheetsController < ApplicationController
 	def create_into_worksheet
     @meeting = Meeting.new(params[:meeting])
 		@meeting.company = current_operator.company
-
-
 		if @meeting.save
-			@worksheets = build_worksheet Date.parse(@meeting.start.to_s)
 			@date = Date.parse(@meeting.start.to_s)
+			@worksheet = Worksheet.new.build(@date, current_operator.company.id)
 			@operators = Operator.select(:first_name, :last_name) \
 				.joins(:company) \
 				.where(:companies => {:id => current_operator.company.id})

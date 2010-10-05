@@ -12,6 +12,7 @@
 	Shop Appointment <small>...customers won't forget you...</small>
 </div>
 
+<% if current_operator %>
 	<div id="menu_container">
 		<ul id="menu_list">
 			<li><%= link_to 'Customers', customers_path %></li>
@@ -19,6 +20,7 @@
 			<li><a href="/worksheets">Worksheet</a></li>
 		</ul>
 	</div>
+<% end %>
 
 	<div id="operator_nav">
 		<% if current_operator %>
