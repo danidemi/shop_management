@@ -1,12 +1,12 @@
-<h1>Listing customers</h1>
+<h1><%= Customer.human_name %></h1>
 <%= link_to image_tag("icon_new.png", :border => 0), new_customer_path %>
 <table>
 	<tr>
-		<th>Firstname</th>
-		<th>Lastname</th>
-		<th>Landlinephone</th>
-		<th>Mobilephone</th>
-		<th>Email</th>
+		<th><%= Customer.human_attribute_name(:firstName) %></th>
+		<th><%= Customer.human_attribute_name(:lastName) %></th>
+		<th><%= Customer.human_attribute_name(:landLinePhone) %></th>
+		<th><%= Customer.human_attribute_name(:mobilePhone) %></th>
+		<th><%= Customer.human_attribute_name(:email) %></th>
 		<th colspan="3">Actions</th>
 	</tr>
 
