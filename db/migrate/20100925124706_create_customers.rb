@@ -1,7 +1,7 @@
 class CreateCustomers < ActiveRecord::Migration
   def self.up
     create_table :customers do |t|
-			t.references :company, :null => false
+      t.references :company, :null => false
       t.string :firstName, :null => false
       t.string :lastName, :null => false
       t.string :landlinePhone

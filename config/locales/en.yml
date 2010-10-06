@@ -2,15 +2,15 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  application_tagline: "...i tuoi clienti non ti dimenticheranno più..."
+  application_tagline: "...your customer won't forget you..."
   application_title: "Shop Appointment"
   activerecord:
     models:
-      customer: "Cliente"
-  attributes: 
-    customer: 
-      firstName: "Nome"
-      lastName: "Cognome"
-      landlinePhone: "Numero Rete Fissa"
-      mobilePhone: "Cellulare"
-      email: "E-mail"
+      customer: "Customer"
+    attributes:
+      customer:
+        firstName: "First Name"
+        lastName: "Last Name"
+        landlinePhone: "Phone"
+        mobilePhone: "Mobile"
+        email: "E-mail"

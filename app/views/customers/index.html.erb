@@ -1,4 +1,4 @@
-<h1><%= Customer.human_name %></h1>
+<h1><%=Customer.human_name(:count =>2)%></h1>
 <%= link_to image_tag("icon_new.png", :border => 0), new_customer_path %>
 <table>
 	<tr>
@@ -7,7 +7,7 @@
 		<th><%= Customer.human_attribute_name(:landLinePhone) %></th>
 		<th><%= Customer.human_attribute_name(:mobilePhone) %></th>
 		<th><%= Customer.human_attribute_name(:email) %></th>
-		<th colspan="3">Actions</th>
+		<th colspan="3"></th>
 	</tr>
 
 	<% @customers.each do |customer| %>

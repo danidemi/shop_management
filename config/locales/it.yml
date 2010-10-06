@@ -1,0 +1,63 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+it:
+  application_tagline: "...i tuoi clienti non ti dimenticheranno più..."
+  application_title: "Shop Appointment"
+  activerecord:
+    models:
+      customer:
+        one: "Cliente"
+        other: "Clienti"
+      meeting:
+        one: "Appuntamento"
+        other: "Appuntamenti"
+      operator:
+        one: "Operatore"
+        other: "Operatori"
+    attributes:
+      customer:
+        firstName: "Nome"
+        lastName: "Cognome"
+        landlinePhone: "Numero Rete Fissa"
+        mobilePhone: "Cellulare"
+        email: "E-mail"
+      meeting:
+        company: "Company"
+        customer: "Cliente"
+        operator: "Operatore"
+        start: "Inizio"
+        end:: "Fine"
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%%d/m/%Y"
+      short: "%b %d"
+      long: "%B %d, %Y"
+    day_names: [Domenica, Lunedi, Martedi, Mercoledi, Giovedi, Venerdi, Sabato]
+    abbr_day_names: [Dom, Lun, Mar, Mer, Gio, Ven, Sab]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, Gennaio, Febbraio, Marzo, Aprile, Maggio, Giugno, Luglio, Agosto, Settembre, Ottobre, Novembre, Dicembre]
+    abbr_month_names: [~, Gen, Feb, Mar, Apr, Mag, Giu, Lug, Ago, Set, Ott, Nov, Dic]
+    # Used in date_select and datetime_select.
+    order:
+      - :day
+      - :month
+      - :year
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    am: "am"
+    pm: "pm"
+
+# Used in array.to_sentence.
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " and "
+      last_word_connector: ", and "

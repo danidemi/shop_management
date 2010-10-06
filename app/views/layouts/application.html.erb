@@ -16,8 +16,8 @@
 <% if current_operator %>
 	<div id="menu_container">
 		<ul id="menu_list">
-			<li><%= link_to 'Customers', customers_path %></li>
-			<li><%= link_to 'Meetings', meetings_path %></li>
+			<li><%= link_to Customer.human_name(:count =>2), customers_path %></li>
+			<li><%= link_to Meeting.human_name(:count =>2), meetings_path %></li>
 			<li><a href="/worksheets">Worksheet</a></li>
 		</ul>
 	</div>

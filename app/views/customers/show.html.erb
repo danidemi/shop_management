@@ -3,26 +3,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Firstname:</b>
+  <b><%= Customer.human_attribute_name(:firstName) %>:</b>
   <%= @customer.firstName %>
 </p>
 
 <p>
-  <b>Lastname:</b>
+  <b><%= Customer.human_attribute_name(:lastName) %>:</b>
   <%= @customer.lastName %>
 </p>
 
 <p>
-  <b>Landlinephone:</b>
+  <b><%= Customer.human_attribute_name(:land_line_phone) %></b>
   <%= @customer.landlinePhone %>
 </p>
 
 <p>
-  <b>Mobilephone:</b>
+  <b><%= Customer.human_attribute_name(:mobile_phone) %>:</b>
   <%= @customer.mobilePhone %>
 </p>
 
 <p>
-  <b>Email:</b>
+  <b><%= Customer.human_attribute_name(:email) %>:</b>
   <%= @customer.email %>
 </p>
