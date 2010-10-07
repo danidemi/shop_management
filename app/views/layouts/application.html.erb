@@ -18,7 +18,7 @@
 		<ul id="menu_list">
 			<li><%= link_to Customer.human_name(:count =>2), customers_path %></li>
 			<li><%= link_to Meeting.human_name(:count =>2), meetings_path %></li>
-			<li><a href="/worksheets">Worksheet</a></li>
+			<li><%= link_to t("worksheet"), "/worksheets" %></li>
 		</ul>
 	</div>
 <% end %>
@@ -26,12 +26,12 @@
 	<div id="operator_nav">
 		<% if current_operator %>
 			<%= current_operator.first_name %> <%= current_operator.last_name %>, <%= current_operator.company.name %>  
-			<%= link_to "Edit profile", edit_operator_path(:current) %> | <%= link_to "Log out", logout_path %>  
+			<%= link_to t("login_profile"), edit_operator_path(:current) %> | <%= link_to t("login_log_out"), logout_path %>  
 		<% else %>  
 			<%= form_for OperatorSession.new do |form| %>    
 						<%= form.text_field :username, :size => 10 %>  
 						<%= form.password_field :password, :size =>10 %>  
-						<%= form.submit "Log In" %>  
+						<%= form.submit t("login_log_in") %>  
 			<% end %> 
 		<% end %>  
 	</div>
