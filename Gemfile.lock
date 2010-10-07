@@ -5,6 +5,15 @@ GIT
     authlogic (2.1.6)
       activesupport
 
+GIT
+  remote: git://github.com/collectiveidea/delayed_job.git
+  revision: 77b0482febced944fba0104b3b2431773414fccf
+  tag: v2.1.0.pre2
+  specs:
+    delayed_job (2.1.0.pre2)
+      activesupport (~> 3.0)
+      daemons
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -39,8 +48,6 @@ GEM
       activesupport (~> 3.0.0)
     builder (2.1.2)
     daemons (1.1.0)
-    delayed_job (2.0.3)
-      daemons
     erubis (2.6.6)
       abstract (>= 1.0.0)
     i18n (0.4.1)
@@ -80,6 +87,6 @@ PLATFORMS
 
 DEPENDENCIES
   authlogic!
-  delayed_job
+  delayed_job!
   rails (= 3.0.0)
   sqlite3-ruby
