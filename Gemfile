@@ -19,6 +19,9 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # Bundle the extra gems:
 #gem 'authlogic', '2.1.6'
 gem "authlogic", :git => "git://github.com/binarylogic/authlogic.git"
+gem "delayed_job", :git => "git://github.com/collectiveidea/delayed_job.git"
+
+
 
 # gem 'bj'
 # gem 'nokogiri'
