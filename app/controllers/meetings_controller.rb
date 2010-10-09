@@ -1,5 +1,11 @@
 class MeetingsController < ApplicationController
 
+  def send_reminder
+    @meeting = Meeting.find(params[:id])
+    AlertMailer.reminder(@meeting).deliver
+    redirect_to(@meeting, :notice => t(:reminder_notice_correctly_sent))   
+  end
+
   # GET /meetings
   # GET /meetings.xml
   def index

@@ -2,14 +2,26 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 it:
+  # Generic localizations
   generic_button_create: "Crea"
   generic_button_update: "Aggiorna"
+
+  # Application localizations
   application_tagline: "...i tuoi clienti non ti dimenticheranno più..."
   application_title: "Shop Appointment"
+
+  # Worsheet
   worksheet: "Agenda Quotidiana"
+
+  # Log In / Log out Box
   login_log_in: "Log In"
   login_log_out: "Log Out"
   login_profile: "Profilo"
+
+  # Reminder
+  reminder_notice_correctly_sent: "Promemoria inviato con successo"
+
+  # Activerecords
   activerecord:
     models:
       customer:
@@ -29,11 +41,12 @@ it:
         mobilePhone: "Cellulare"
         email: "E-mail"
       meeting:
-        company: "Company"
+        company: "Azienda"
         customer: "Cliente"
         operator: "Operatore"
         start: "Inizio"
-        end:: "Fine"
+        end: "Fine"
+        notes: "Note"
   date:
     formats:
       # Use the strftime parameters for formats.

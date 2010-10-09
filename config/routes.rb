@@ -13,6 +13,7 @@ ShopManagement::Application.routes.draw do
 			
 
 	# Meetings
+  match 'meetings/send_reminder/' => 'meetings#send_reminder'
 	resources :meetings
 
 	# Customers

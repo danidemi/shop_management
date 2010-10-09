@@ -40,11 +40,14 @@
 						<% if meetings
 							meetings.each do |meeting| %>
 								<div class="meeting">
+                  <div>
+                    <%= link_to image_tag("icon_show_small.png", :border => 0), meeting_path(meeting) %>  
+                  </div>
 									<div>
-										<%= meeting.start.strftime("%H:%M") %> - <%= meeting.end.strftime("%H:%M") %>
+										<%= meeting.start.strftime("%H:%M") %>&nbsp;-&nbsp;<%= meeting.end.strftime("%H:%M") %>
 									</div>
 									<div>
-										<%= meeting.customer.firstName %><%= meeting.customer.lastName %>
+										<%= meeting.customer.firstName %> <%= meeting.customer.lastName %>
 									</div>
 									<div>
 										<%= meeting.notes %>
