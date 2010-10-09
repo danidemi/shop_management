@@ -4,25 +4,22 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Promemoria appuntamento presso "Estetica Le Rose"</h1>  
+    <h1>Promemoria appuntamento presso <strong><%= @meeting.company.name %></strong></h1>  
     <p>
-      Ciao Paolo, questo promemoria è per ricordarti il tuo appuntamento presso il nostro punto vendita di 
-      via Giappone, 4.
+      Ciao <%= @meeting.customer.firstName %> <%= @meeting.customer.lastName %>, questo promemoria è per ricordarti il tuo appuntamento presso il nostro punto vendita.
     </p>
     <p>
       I dettagli dell'appuntamento: <br/>
       <strong>
-      Mercoledi 14 Agosto 2010, alle 10:00 <br/>
-      per Maniure unghie.
+      <%= l(@meeting.start) %>
+      <% if(@meeting.notes != nil) %>
+        <br/>
+        per <%= @meeting.notes %>.
+      <% end %>
       </strong>
     </p>
     <p>
-      Nel caso tu abbia la necessità di spostare l'appuntamento non esitare a contattarci ad uno
-      dei nostri contatti.
-      <ul>
-        <li>Telefonando al 02/34343434</li>
-        <li>Inviando una mail a info@esteticalefate.com</li>
-      </ul>
+      Nel caso tu abbia la necessità di spostare l'appuntamento non esitare a contattarci.
     </p>
   </body> 
 </html> 

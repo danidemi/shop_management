@@ -14,16 +14,16 @@
 
 <p>
   <b><%=Meeting.human_attribute_name(:start)%>:</b>
-  <%= @meeting.start %>
+  <%= l(@meeting.start) %>
 </p>
 
 <p>
-  <b>Meeting.human_attribute_name(:end)</b>
-  <%= @meeting.end %>
+  <b><%=Meeting.human_attribute_name(:end)%>:</b>
+  <%= l(@meeting.end) %>
 </p>
 
 <p>
-  <b>Meeting.human_attribute_name(:notes):</b>
+  <b><%=Meeting.human_attribute_name(:notes)%>:</b>
   <%= @meeting.notes %>
 </p>
 

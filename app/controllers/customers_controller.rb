@@ -44,7 +44,12 @@ class CustomersController < ApplicationController
 		@customer.company = current_operator.company
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to(@customer, :notice => 'Customer was successfully created.') }
+        format.html { 
+          redirect_to(
+            @customer, 
+            :notice => t(:customer_notice_correctly_created)
+          ) 
+        }
         format.xml  { render :xml => @customer, :status => :created, :location => @customer }
       else
         format.html { render :action => "new" }
@@ -60,7 +65,12 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.update_attributes(params[:customer])
-        format.html { redirect_to(@customer, :notice => 'Customer was successfully updated.') }
+        format.html { 
+          redirect_to(
+            @customer, 
+            :notice => t(:customer_notice_correctly_updated) 
+          ) 
+        }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -13,7 +13,8 @@
 ActiveRecord::Schema.define(:version => 20100925130208) do
 
   create_table "companies", :force => true do |t|
-    t.string   "name",       :null => false
+    t.string   "name",             :null => false
+    t.string   "email_originator", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

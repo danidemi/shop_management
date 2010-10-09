@@ -42,7 +42,6 @@ class MeetingsController < ApplicationController
 		if @end != nil then
 			@meeting.end = @end 
 		end
-		logger.info "xxxxxxxxxx" + @meeting.start.to_s
 
     respond_to do |format|
       format.html # new.html.erb
@@ -65,7 +64,7 @@ class MeetingsController < ApplicationController
 
     respond_to do |format|
       if @meeting.save
-        format.html { redirect_to(@meeting, :notice => 'Meeting was successfully created.') }
+        format.html { redirect_to(@meeting, :notice => t(:meeting_notice_correctly_created) ) }
         format.xml  { render :xml => @meeting, :status => :created, :location => @meeting }
       else
         format.html { render :action => "new" }
@@ -81,7 +80,7 @@ class MeetingsController < ApplicationController
 
     respond_to do |format|
       if @meeting.update_attributes(params[:meeting])
-        format.html { redirect_to(@meeting, :notice => 'Meeting was successfully updated.') }
+        format.html { redirect_to(@meeting, :notice => t(:meeting_notice_correctly_updated)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -3,8 +3,7 @@
 <table>
   <tr>
     <th><%= Customer.human_name %></th>
-    <th><%= Meeting.human_attribute_name(:start) %></th>
-    <th><%= Customer.human_attribute_name(:end) %></th>
+    <th colspan="2"><%= Meeting.human_attribute_name(:start) %> - <%= Meeting.human_attribute_name(:end) %></th>
 		<th><%= Operator.human_name %></th>
     <th><%= Meeting.human_attribute_name(:notes)%></th>
     <th colspan="3"></th>
@@ -12,9 +11,11 @@
 
 <% @meetings.each do |meeting| %>
   <tr>
-    <td><%= meeting.customer.firstName %><%= meeting.customer.lastName %></td>
-    <td><%= meeting.start %></td>
-    <td><%= meeting.end %></td>
+    <td><%= meeting.customer.firstName %> <%= meeting.customer.lastName %></td>
+    <td colspan="2">
+      <%= l(meeting.start, :format => :date) %><br/> 
+      <%= l(meeting.start, :format => :time) %> - <%= l(meeting.end, :format => :time) %>
+    </td>
 		<td><%= meeting.operator.first_name %><%= meeting.operator.last_name %></td>
     <td><%= meeting.notes %></td>
     <td><%= link_to image_tag("icon_show.png", :border => 0), meeting %></td>

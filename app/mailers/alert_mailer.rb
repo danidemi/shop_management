@@ -9,9 +9,9 @@ class AlertMailer < ActionMailer::Base
   def reminder(meeting)
     @meeting = meeting
     mail(
-      :from => "escher75@gmail.com",
-      :to => "demichelis@danidemi.com",
-      :subject => "Promemoria"
+      :from => @meeting.company.email_originator,
+      :to => @meeting.customer.email,
+      :subject => t(:reminder_mail_subject)
     )
       
   end

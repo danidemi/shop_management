@@ -9,11 +9,13 @@
 companies = Array.new
 
 companies << Company.create(
-	:name => "Unghie Belle s.r.l."
+	:name => "Unghie Belle s.r.l.",
+  :email_originator => "Unghie Belle <escher75@gmail.com>"
 )
 
 companies << Company.create(
-	:name => "Riparazioni Rapide s.n.c."
+	:name => "Riparazioni Rapide s.n.c.",
+  :email_originator => "Riparazioni Rapide <escher75@gmail.com>"
 )
 
 #Company[0]
