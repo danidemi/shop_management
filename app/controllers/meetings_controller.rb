@@ -1,10 +1,37 @@
 class MeetingsController < ApplicationController
 
+#  def send_reminder
+#    @meeting = Meeting.find(params[:id])
+#    mailMessage = AlertMailer.reminder(@meeting)
+#    #mailMessage.delay.deliver
+#    mailMessage.deliver
+#    redirect_to(@meeting, :notice => t(:reminder_notice_correctly_sent))   
+#  end
+
   def send_reminder
     @meeting = Meeting.find(params[:id])
     mailMessage = AlertMailer.reminder(@meeting)
-    mailMessage.delay.deliver
+#    mailMessage.delivery_method :smtp,   { :address   => "mail.xxxxxx",
+#                                :port                 => 25,
+#                                :domain               => 'localhost.localdomain',
+#                                :user_name            => 'xxxx@xxxx.xxx',
+#                                :password             => 'xxxxx',
+#                                :authentication       => false,
+#                                :enable_starttls_auto => true  }
+    mailMessage.delivery_method :sendmail
+#    mailMessage.delay.deliver
+    mailMessage.deliver
     redirect_to(@meeting, :notice => t(:reminder_notice_correctly_sent))   
+  end
+
+  def send_reminder_with_mail
+    @meeting = Meeting.find(params[:id])
+    mail = Mail.new do
+        from @meeting.company.email_originator
+        to @meeting.customer.email
+        subject t(:reminder_mail_subject)
+        body mail_body
+    end
   end
 
   # GET /meetings

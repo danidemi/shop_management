@@ -90,7 +90,7 @@ it:
 
       # When no format has been given, it uses default.
       # You can provide other formats here if you like!
-      default: "%%d/m/%Y"
+      default: "%d/%m/%Y"
       short: "%b %d"
       long: "%B %d, %Y"
     day_names: [Domenica, Lunedi, Martedi, Mercoledi, Giovedi, Venerdi, Sabato]

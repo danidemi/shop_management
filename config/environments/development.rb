@@ -16,10 +16,14 @@ ShopManagement::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
-# Defaults to: # config.action_mailer.sendmail_settings = { 
-# :location => '/usr/sbin/sendmail', 
-# :arguments => '-i -t' 
-# } 
+  # Defaults to: 
+#  sendmail_log_file = File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'log', 'sendmail.log'))
+#  puts "Sendmail log file:" + sendmail_log_file
+#  config.action_mailer.sendmail_settings = { 
+#    :location => '/usr/sbin/sendmail', 
+#    #:arguments => '-i -t -D ' + sendmail_log_file
+#    :arguments => '-i -t'
+#  } 
 
   #Sendmail
   config.action_mailer.delivery_method = :sendmail 

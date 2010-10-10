@@ -9,7 +9,7 @@
 
 <h2 id="month">  
 	<%= link_to image_tag("icon_previous.png", :border => 0), :action => "worksheet", :date => (@date.-1).strftime("%Y-%m-%d") %>  
-	<%= h @date.strftime("%A %d/%m/%Y") %>  
+  <%= l @date %>    
 	<%= link_to image_tag("icon_next.png", :border => 0), :action => "worksheet", :date => (@date.+1).strftime("%Y-%m-%d") %>  
 </h2> 
 
