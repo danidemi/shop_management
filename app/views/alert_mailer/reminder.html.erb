@@ -11,7 +11,7 @@
     <p>
       I dettagli dell'appuntamento: <br/>
       <strong>
-      <%= l(@meeting.start) %>
+      Il <%= l(@meeting.start, :format => :date) %> alle <%= l(@meeting.start, :format => :time) %>
       <% if(@meeting.notes != nil) %>
         <br/>
         per <%= @meeting.notes %>.

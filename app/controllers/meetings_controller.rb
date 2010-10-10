@@ -2,7 +2,8 @@ class MeetingsController < ApplicationController
 
   def send_reminder
     @meeting = Meeting.find(params[:id])
-    AlertMailer.reminder(@meeting).deliver
+    mailMessage = AlertMailer.reminder(@meeting)
+    mailMessage.delay.deliver
     redirect_to(@meeting, :notice => t(:reminder_notice_correctly_sent))   
   end
 

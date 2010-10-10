@@ -10,6 +10,7 @@ it:
   # Application localizations
   application_tagline: "...i tuoi clienti non ti dimenticheranno più..."
   application_title: "Shop Appointment"
+  application_credits: "Studio Ingegneria Demichelis"
 
   # Worsheet
   worksheet: "Agenda Quotidiana"
