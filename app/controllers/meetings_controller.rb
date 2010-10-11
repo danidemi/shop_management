@@ -1,3 +1,4 @@
+require 'alert_job.rb'
 class MeetingsController < ApplicationController
 
 #  def send_reminder
@@ -8,7 +9,7 @@ class MeetingsController < ApplicationController
 #    redirect_to(@meeting, :notice => t(:reminder_notice_correctly_sent))   
 #  end
 
-  def send_reminder
+  def send_reminder_old
     @meeting = Meeting.find(params[:id])
     mailMessage = AlertMailer.reminder(@meeting)
 #    mailMessage.delivery_method :smtp,   { :address   => "mail.xxxxxx",
@@ -21,6 +22,12 @@ class MeetingsController < ApplicationController
     mailMessage.delivery_method :sendmail
 #    mailMessage.delay.deliver
     mailMessage.deliver
+    redirect_to(@meeting, :notice => t(:reminder_notice_correctly_sent))   
+  end
+
+  def send_reminder
+    @meeting = Meeting.find(params[:id])
+    Delayed::Job.enqueue AlertJob.new(:reminder, params[:id])
     redirect_to(@meeting, :notice => t(:reminder_notice_correctly_sent))   
   end
 
