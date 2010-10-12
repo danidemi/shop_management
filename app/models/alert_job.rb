@@ -10,7 +10,7 @@ class AlertJob < Struct.new(:notifier_method,:meeting_id)
       if(meeting)
         puts 'meeting found is ' + meeting.inspect
         #message = AlertMailer.send notifier_method, meeting
-        puts AlertMailer.respond_to?( 'reminder' )
+        puts AlertMailer.respond_to?( notifier_method )
         message = AlertMailer.reminder( meeting );
         puts 'message body:' + message.body.decoded
         #puts 'message header:' + message.header

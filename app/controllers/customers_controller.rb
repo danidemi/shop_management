@@ -1,8 +1,37 @@
+class Search
+
+  def term
+    @term
+  end
+
+  def parse(params)
+    if params && params[:search] && params[:search][:term] && params[:search][:term].length > 0
+      @term = params[:search][:term]
+    end 
+    return self
+  end
+
+  def active?
+    return (@term != nil)
+  end
+
+end
+
 class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.xml
-  def index
-    @customers = Customer.joins(:company).where(:companies => {:id => current_operator.company.id})
+  def index    
+    @search = Search.new.parse(params)
+
+    if @search.active?
+      @customers = Customer \
+        .joins(:company) \
+        .where(:companies => {:id => current_operator.company.id}) \
+        .where(["firstName LIKE ? OR lastName LIKE ?", "%" + @search.term + "%", "%" + @search.term + "%"])
+    else
+      @customers = Customer.joins(:company).where(:companies => {:id => current_operator.company.id})
+    end
+    
 
     respond_to do |format|
       format.html # index.html.erb
