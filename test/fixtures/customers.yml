@@ -1,15 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  firstName: MyString
-  lastName: MyString
-  landlinePhone: MyString
-  mobilePhone: MyString
-  email: MyString
-
-two:
-  firstName: MyString
-  lastName: MyString
-  landlinePhone: MyString
-  mobilePhone: MyString
-  email: MyString
+#customer_alvin:
+#  firstName: Alvin
+#  lastName: Melvin
+#  landlinePhone: +39021111111
+#  mobilePhone: +393407777777
+#  email: alvin@domain.com

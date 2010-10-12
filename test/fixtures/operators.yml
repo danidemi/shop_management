@@ -1,15 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  username: MyString
-  password: MyString
-  first_name: MyString
-  last_name: MyString
-  company: 
-
-two:
-  username: MyString
-  password: MyString
-  first_name: MyString
-  last_name: MyString
-  company: 
+#one:
+#  username: usr1
+#  password: pwd1
+#  first_name: OpName1
+#  last_name: OpSurname1
+#  company: 

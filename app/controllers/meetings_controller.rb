@@ -27,7 +27,10 @@ class MeetingsController < ApplicationController
 
   def send_reminder
     @meeting = Meeting.find(params[:id])
-    Delayed::Job.enqueue AlertJob.new(:reminder, params[:id])
+    alert_job = AlertJob.new
+    alert_job.notifier_method = "reminder"
+    alert_job.meeting_id = params[:id]
+    Delayed::Job.enqueue alert_job
     redirect_to(@meeting, :notice => t(:reminder_notice_correctly_sent))   
   end
 

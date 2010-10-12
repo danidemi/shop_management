@@ -1,7 +1,5 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
+company_one:
+  name: One s.n.c.
 
-two:
-  name: MyString
