@@ -34,6 +34,14 @@ it:
 
   # Activerecords
   activerecord:
+    errors:
+      models:
+        customer:
+          attributes:
+            firstName:
+              blank: "Obbligatorio"
+            lastName:
+              blank: "Obbligatorio"
     models:
       customer:
         one: "Cliente"
