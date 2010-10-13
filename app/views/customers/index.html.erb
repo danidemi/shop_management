@@ -3,7 +3,7 @@
 
 <%= form_for :search, :url => customers_path, :html => {:method => :get} do |f| %>
   <%= f.search_field :term %>
-  <%= f.submit %>
+  <%= image_submit_tag 'icon_search.png' %>
 <% end %>
 
 <table>
