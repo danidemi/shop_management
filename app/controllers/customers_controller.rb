@@ -18,6 +18,7 @@ class Search
 end
 
 class CustomersController < ApplicationController
+
   # GET /customers
   # GET /customers.xml
   def index    
@@ -27,9 +28,11 @@ class CustomersController < ApplicationController
       @customers = Customer \
         .joins(:company) \
         .where(:companies => {:id => current_operator.company.id}) \
-        .where(["firstName LIKE ? OR lastName LIKE ?", "%" + @search.term + "%", "%" + @search.term + "%"])
+        .where(["firstName LIKE ? OR lastName LIKE ?", "%" + @search.term + "%", "%" + @search.term + "%"]) \
+        .paginate :page => params[:page], :order => 'created_at ASC', :per_page => 10
     else
-      @customers = Customer.joins(:company).where(:companies => {:id => current_operator.company.id})
+      @customers = Customer.joins(:company).where(:companies => {:id => current_operator.company.id}) \
+      .paginate :page => params[:page], :order => 'created_at ASC', :per_page => 10
     end
     
 

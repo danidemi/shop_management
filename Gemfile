@@ -20,7 +20,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 #gem 'authlogic', '2.1.6'
 gem "authlogic", :git => "git://github.com/binarylogic/authlogic.git"
 gem "delayed_job", :git => "git://github.com/collectiveidea/delayed_job.git", :tag => "v2.1.0.pre2"
-
+gem "will_paginate", "~> 3.0.pre2"
 
 # gem 'bj'
 # gem 'nokogiri'

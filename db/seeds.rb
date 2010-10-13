@@ -6,17 +6,59 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
+# Demo company, a lot of data
+
+company_demo = Company.create(
+	:name => "Demo s.p.a.",
+  :email_originator => "Ufficio prenotazione Demo s.p.a. <escher75@gmail.com>"
+)
+
+operator_demo_1 = Operator.create(
+	:username	=> "demo1",
+	:password	=> "demo1",
+	:password_confirmation => "demo1",
+	:first_name => "Paolo",
+	:last_name => "Sprits",
+	:company_id => company_demo
+)
+
+operator_demo_2 = Operator.create(
+	:username	=> "demo2",
+	:password	=> "demo2",
+	:password_confirmation => "demo2",
+	:first_name => "Gianna",
+	:last_name => "Libris",
+	:company_id => company_demo
+)
+
+100.times { |i|
+  i = i.to_s
+  Customer.create(
+	  :company_id => company_demo,
+	  :firstName => "Cliente " + i,
+	  :lastName => "Cliente " + i,
+	  :landlinePhone => "+3902" + i, 
+	  :mobilePhone => "+3902" + i, 
+	  :email => "mail." + i + "@mail.com")
+}
+
+
+
+# A couple of companies
+
 companies = Array.new
 
 companies << Company.create(
-	:name => "Unghie Belle s.r.l.",
-  :email_originator => "Unghie Belle <escher75@gmail.com>"
+	:name => "Estetica Le Fate s.r.l.",
+  :email_originator => "Le Fate <escher75@gmail.com>"
 )
 
 companies << Company.create(
 	:name => "Riparazioni Rapide s.n.c.",
   :email_originator => "Riparazioni Rapide <escher75@gmail.com>"
 )
+
+
 
 #Company[0]
 
