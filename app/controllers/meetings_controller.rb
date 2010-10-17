@@ -105,6 +105,8 @@ class MeetingsController < ApplicationController
         format.html { redirect_to(@meeting, :notice => t(:meeting_notice_correctly_created) ) }
         format.xml  { render :xml => @meeting, :status => :created, :location => @meeting }
       else
+    		@customers = Customer.joins(:company).where(:companies => {:id => current_operator.company.id})
+    		@operators = Operator.joins(:company).where(:companies => {:id => current_operator.company.id})
         format.html { render :action => "new" }
         format.xml  { render :xml => @meeting.errors, :status => :unprocessable_entity }
       end

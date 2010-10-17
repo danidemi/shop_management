@@ -6,7 +6,7 @@ class Customer < ActiveRecord::Base
 
   # Validation
   validates_presence_of :firstName, :lastName
-  #validates_format_of :email, :with => /\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :allow_blank => true
 
   # Pagination
   cattr_reader :per_page

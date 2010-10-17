@@ -6,6 +6,9 @@ it:
   generic_button_create: "Crea"
   generic_button_update: "Aggiorna"
   generic_button_ok: "OK"
+  generic:
+    error:
+      form: "Ci sono segli errori nei dati immessi."
 
   # Application localizations
   application_tagline: "...i tuoi clienti non ti dimenticheranno più..."
@@ -39,9 +42,18 @@ it:
         customer:
           attributes:
             firstName:
-              blank: "Obbligatorio"
+              blank: "obbligatorio"
             lastName:
-              blank: "Obbligatorio"
+              blank: "obbligatorio"
+            email:
+              invalid: "non valida"
+        meeting:
+          attributes:
+            start:
+              in_the_past: "nel passato"
+              after_end: "deve precedere fine"
+            end:
+              in_the_past: "nel passato"
     models:
       customer:
         one: "Cliente"
