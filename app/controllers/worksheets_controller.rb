@@ -137,6 +137,8 @@ class WorksheetsController < ApplicationController
 				.where(:companies => {:id => current_operator.company.id})
 			render :action => "worksheet"
 		else
+		  @customers = Customer.joins(:company).where(:companies => {:id => current_operator.company.id})
+		  @operators = Operator.joins(:company).where(:companies => {:id => current_operator.company.id})
 			render :action => "new_from_worksheet"
 		end
 	end
