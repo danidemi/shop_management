@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%=t :application_title %> - <%=t(:application_credits) %></title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
 
-<div id="header">
-	<%= link_to t(:application_title), "/" %>
-	 <small><%=t :application_tagline %></small>
-</div>
+  <head>
+    <title><%=t :application_title %> - <%=t(:application_credits) %></title>
+    <%= stylesheet_link_tag :all %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+  </head>
 
-<% if current_operator %>
-	<div id="menu_container">
-		<ul id="menu_list">
-			<li><%= link_to Customer.human_name(:count =>2), customers_path %></li>
-			<li><%= link_to Meeting.human_name(:count =>2), meetings_path %></li>
-			<li><%= link_to t("worksheet"), "/worksheets" %></li>
-		</ul>
-	</div>
-<% end %>
+  <body>
 
-	<div id="operator_nav">
-		<% if current_operator %>
-			<%= current_operator.first_name %> <%= current_operator.last_name %>, <%= current_operator.company.name %>  
-			<%= link_to t("login_profile"), edit_operator_path(:current) %> | <%= link_to t("login_log_out"), logout_path %>  
-		<% else %>  
-			<%= form_for OperatorSession.new do |form| %>    
-						<%= form.text_field :username, :size => 10 %>  
-						<%= form.password_field :password, :size =>10 %>  
-						<%= form.submit t("login_log_in") %>  
-			<% end %> 
-		<% end %>  
-	</div>
+    <div id="header">
+	    <%= link_to t(:application_title), "/" %>
+	     <small><%=t :application_tagline %></small>
+    </div>
 
-<div>
-<%= yield %>
-</div>
+    <% if current_operator %>
+	    <div id="menu_container">
+		    <ul id="menu_list">
+          <li><%= link_to Operator.human_name(:count =>2), operators_path %></li>
+			    <li><%= link_to Customer.human_name(:count =>2), customers_path %></li>
+			    <li><%= link_to Meeting.human_name(:count =>2), meetings_path %></li>
+			    <li><%= link_to t("worksheet"), "/worksheets" %></li>
+		    </ul>
+	    </div>
+    <% end %>
 
-</body>
+	  <div id="operator_nav">
+		  <% if current_operator %>
+			  <%= current_operator.first_name %> <%= current_operator.last_name %>, <%= current_operator.company.name %>  
+			  <%= link_to t("login_profile"), edit_operator_path(:current) %> | <%= link_to t("login_log_out"), logout_path %>  
+		  <% else %>  
+			  <%= form_for OperatorSession.new do |form| %>    
+						  <%= form.text_field :username, :size => 10 %>  
+						  <%= form.password_field :password, :size =>10 %>  
+						  <%= form.submit t("login_log_in") %>  
+			  <% end %> 
+		  <% end %>  
+	  </div>
+
+    <div>
+      <%= yield %>
+    </div>
+
+  </body>
 </html>

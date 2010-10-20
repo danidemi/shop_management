@@ -35,8 +35,8 @@ operator_demo_2 = Operator.create(
   i = i.to_s
   Customer.create(
 	  :company_id => company_demo,
-	  :firstName => "Cliente " + i,
-	  :lastName => "Cliente " + i,
+	  :firstName => "Nome" + i,
+	  :lastName => "Cognome" + i,
 	  :landlinePhone => "+3902" + i, 
 	  :mobilePhone => "+3902" + i, 
 	  :email => "mail." + i + "@mail.com")

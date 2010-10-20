@@ -78,6 +78,10 @@ it:
         start: "Inizio"
         end: "Fine"
         notes: "Note"
+      operator:
+        first_name: "Nome"
+        last_name: "Cognome"
+        username: "Username"
   date:
     formats:
       # Use the strftime parameters for formats.
