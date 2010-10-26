@@ -46,21 +46,72 @@ class OperatorsController < ApplicationController
 
   def create
 		@operator = Operator.new(params[:operator])
-		if @operator.save
-			flash[:notice] = "Successfully registered operator."
-			redirect_to root_url
-		else
-			redirect_to :action => :new
-		end			
+    @operator.company = current_operator.company
+    respond_to do |format|
+		  if @operator.save
+        format.html { 
+          redirect_to(@operator, :notice => t('operator.notice.correctly_created'))
+        }
+        format.xml  { render :xml => @operator, :status => :created, :location => @operator }
+		  else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @customer.errors, :status => :unprocessable_entity }
+		  end			
+    end
+  end
+
+  # GET /customers/1
+  # GET /customers/1.xml
+  def show
+    @operator = Operator.find(params[:id])
+    if(@operator.company == current_operator.company)
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @customer }
+      end
+    end
   end
 
 	def edit
 		@operator = Operator.find(params[:id])
 		if @operator.update_attributes(params[:id])
-			flash[:notice] = "Successfully updated operator."
+			flash[:notice] = t('operator.notice.correctly_updated')
 		else
 			render :action => 'edit'
 		end
 	end
+
+  # PUT /customers/1
+  # PUT /customers/1.xml
+  def update
+    @operator = Customer.find(params[:id])
+
+    respond_to do |format|
+      if @operator.update_attributes(params[:operator])
+        format.html { 
+          redirect_to(
+            @operator, 
+            :notice => t('operator.notice.correctly_updated') 
+          ) 
+        }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @operator.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /customers/1
+  # DELETE /customers/1.xml
+  def destroy
+    @operator = Operator.find(params[:id])
+    @operator.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(operators_url) }
+      format.xml  { head :ok }
+    end
+  end
 
 end

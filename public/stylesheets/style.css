@@ -1,3 +1,16 @@
+/* Tables */
+tr.odd {
+  background-color: white;
+}
+
+tr.even {
+  background-color: white;
+}
+
+table{
+  border: "0";
+}
+
 #operator_nav {
 	float: right;
 }

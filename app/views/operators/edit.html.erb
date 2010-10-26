@@ -1,2 +1,5 @@
-<h1>Operator#edit</h1>
-<p>Find me in app/views/operator/edit.html.erb</p>
+<h1><%=Operator.human_name%></h1>
+<%= link_to image_tag("icon_show.png", :border => 0), @operator %>
+<%= link_to image_tag("icon_back.png", :border => 0), operators_path %>
+
+<%= render 'form' %>

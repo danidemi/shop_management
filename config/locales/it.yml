@@ -7,6 +7,9 @@ it:
   generic_button_update: "Aggiorna"
   generic_button_ok: "OK"
   generic:
+    button:
+      delete:
+        confirmation: "Sei sicuro ?"
     error:
       form: "Ci sono segli errori nei dati immessi."
 
@@ -35,6 +38,11 @@ it:
   meeting_notice_correctly_updated: "L'appuntamento è stato correttamente aggiornato"
   meeting_notice_correctly_created: "Il nuovo appuntamento è stato correttamente memorizzato"
 
+  operator:
+    notice:
+      correctly_created: "L'operatore è stato creato correttamente"
+      correctly_updated: "L'operatore è stato aggiornato correttamente"
+
   # Activerecords
   activerecord:
     errors:
@@ -54,6 +62,20 @@ it:
               after_end: "deve precedere fine"
             end:
               in_the_past: "nel passato"
+        operator:
+          attributes:
+            username:
+              too_short: "Username troppo corto"
+              taken: "Username non disponibile"
+            password:
+              too_short: "Password troppo corta"
+              confirmation: "La conferma password non corrisponde"
+            password_confirmation:
+              too_short: "Conferma password troppo corta"
+            first_name:
+              blank: "Manca il nome"
+            last_name:
+              blank: "Manca il cognome"
     models:
       customer:
         one: "Cliente"
@@ -82,6 +104,8 @@ it:
         first_name: "Nome"
         last_name: "Cognome"
         username: "Username"
+        password: "Password"
+        password_confirmation: "Conferma Password"
   date:
     formats:
       # Use the strftime parameters for formats.

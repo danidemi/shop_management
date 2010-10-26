@@ -1,7 +1,5 @@
 <h1><%=Operator.human_name(:count =>2)%></h1>
-<!--
-<%= link_to image_tag("icon_new.png", :border => 0), new_customer_path %>
--->
+<%= link_to image_tag("icon_new.png", :border => 0), new_operator_path %>
 
 <%= form_for :search, :url => operators_path, :html => {:method => :get} do |f| %>
   <%= f.search_field :term %>
@@ -13,26 +11,21 @@
 		<th><%= Operator.human_attribute_name(:first_name) %></th>
 		<th><%= Operator.human_attribute_name(:last_name) %></th>
 		<th><%= Operator.human_attribute_name(:username) %></th>
-    <!--
-		<th colspan="3"></th>
-    -->
+		<th colspan="2"></th>
 	</tr>
 
 	<% @operators.each do |operator| %>
-		<tr>
+		<tr class="<%= cycle(:odd,:even)%>">
 			<td><%= operator.first_name %></td>
 			<td><%= operator.last_name %></td>
 			<td><%= operator.username %></td>
-      <!--
 			<td><%= link_to image_tag("icon_show.png", :border => 0), operator %></td>
+      <!--
 			<td><%= link_to image_tag("icon_edit.png", :border => 0), edit_operator_path(operator) %></td>
-			<td><%= link_to image_tag("icon_delete.png", :border => 0), operator, :confirm => 'Are you sure?', :method => :delete %></td>
       -->
+			<td><%= link_to image_tag("icon_delete.png", :border => 0), operator, :confirm => t('generic.button.delete.confirmation'), :method => :delete %></td>
 		</tr>
 	<% end %>
 </table>
 
 <%= will_paginate @operators %>
-
-
-

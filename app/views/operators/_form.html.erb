@@ -1,0 +1,43 @@
+<%= form_for(@operator) do |form| %>
+
+  <% if @operator.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t('generic.error.form') %></h2>
+
+      <ul>
+      <% @operator.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="field">
+		<%= form.label :username %><br />
+		<%= form.text_field :username %><br />
+	</div>
+
+	<div class="field">
+		<%= form.label :password %><br />
+		<%= form.password_field :password %><br />
+	</div>
+
+	<div class="field">
+		<%= form.label :password_confirmation %><br />
+		<%= form.password_field :password_confirmation %><br />
+	</div>
+
+	<div class="field">
+		<%= form.label :first_name %><br />
+		<%= form.text_field :first_name %><br />
+	</div>
+
+	<div class="field">
+		<%= form.label :last_name %><br />
+		<%= form.text_field :last_name %><br />
+	</div>
+
+	<div class="actions">
+		<%= form.submit %>
+	</div>
+<% end %>

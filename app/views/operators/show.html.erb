@@ -1,0 +1,17 @@
+<%= link_to image_tag("icon_edit.png", :border => 0), edit_meeting_path(@operator) %>
+<%= link_to image_tag("icon_back.png", :border => 0), operators_path %>
+<p id="notice"><%= notice %></p>
+<p>
+  <b><%= Operator.human_attribute_name(:first_name) %>:</b>
+  <%= @operator.first_name %>
+</p>
+
+<p>
+  <b><%= Operator.human_attribute_name(:last_name) %>:</b>
+  <%= @operator.last_name %>
+</p>
+
+<p>
+  <b><%= Operator.human_attribute_name(:username) %></b>
+  <%= @operator.username %>
+</p>
