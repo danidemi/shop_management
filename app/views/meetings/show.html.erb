@@ -9,7 +9,11 @@
 
 <p>
   <b><%=Operator.human_name%>:</b>
-	<%= @meeting.operator.first_name %> <%= @meeting.operator.last_name %>
+  <% if @meeting.operator %>
+  	<%= @meeting.operator.first_name %> <%= @meeting.operator.last_name %>
+  <% else %>
+    <%= t('meeting.no_operator') %>
+  <% end %>
 </p>
 
 <p>
@@ -24,6 +28,10 @@
 
 <p>
   <b><%=Meeting.human_attribute_name(:notes)%>:</b>
-  <%= @meeting.notes %>
+  <% unless @meeting.notes.blank? %>
+    <%= @meeting.notes.notes %>
+  <% else %>
+    <%= t('meeting.no_notes') %>
+  <% end %>
 </p>
 

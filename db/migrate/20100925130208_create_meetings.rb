@@ -3,7 +3,7 @@ class CreateMeetings < ActiveRecord::Migration
     create_table :meetings do |t|
 			t.references :company, :null => false
       t.references :customer, :null => false
-			t.references :operator, :null => false
+			t.references :operator, :null => true
       t.datetime :start, :null => false
       t.datetime :end, :null => false
       t.text :notes

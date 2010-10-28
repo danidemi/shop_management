@@ -16,8 +16,20 @@
       <%= l(meeting.start, :format => :date) %><br/> 
       <%= l(meeting.start, :format => :time) %> - <%= l(meeting.end, :format => :time) %>
     </td>
-		<td><%= meeting.operator.first_name %><%= meeting.operator.last_name %></td>
-    <td><%= meeting.notes %></td>
+		<td>
+      <% if meeting.operator %>
+        <%= meeting.operator.first_name %><%= meeting.operator.last_name %>
+      <% else %>
+        <%= t('meeting.no_operator') %>
+      <% end %>
+    </td>
+    <td>
+      <% unless meeting.notes.blank? %>
+        <%= meeting.notes %>
+      <% else %>
+        <%= t('meeting.no_notes') %>
+      <% end %>
+    </td>
     <td><%= link_to image_tag("icon_show.png", :border => 0), meeting %></td>
     <td><%= link_to image_tag("icon_edit.png", :border => 0), edit_meeting_path(meeting) %></td>
     <td><%= link_to image_tag("icon_delete.png", :border => 0), meeting, :confirm => 'Are you sure?', :method => :delete %></td>

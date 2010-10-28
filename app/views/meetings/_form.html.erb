@@ -20,8 +20,13 @@
 	</div>
 
 	<div class="field">
-		<%= form.label :operator %><br />
-		<%= form.select :operator_id, @operators.collect{|o| [o.first_name + " " + o.last_name, o.id]} %><br />
+		<%= form.label :operator %>
+    <br />
+		<%= form.select \
+          :operator_id, \
+          @operators.collect{ |opr| [opr.first_name + " " + opr.last_name, opr.id]}, \
+          {:include_blank => t("meeting.no_operator")} %>
+    <br />
 	</div>
 
 	<div class="field">

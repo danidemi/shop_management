@@ -37,6 +37,9 @@ it:
   # Meetings
   meeting_notice_correctly_updated: "L'appuntamento è stato correttamente aggiornato"
   meeting_notice_correctly_created: "Il nuovo appuntamento è stato correttamente memorizzato"
+  meeting:
+    no_operator: "Nessun operatore assegnato"
+    no_notes: "---"
 
   operator:
     notice:
