@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20101010102533) do
   create_table "meetings", :force => true do |t|
     t.integer  "company_id",  :null => false
     t.integer  "customer_id", :null => false
-    t.integer  "operator_id", :null => false
+    t.integer  "operator_id"
     t.datetime "start",       :null => false
     t.datetime "end",         :null => false
     t.text     "notes"

@@ -5,7 +5,10 @@ class Worksheet
 	def build(a_date, company_id)
 
 		# Retrieve the list of operators
-		@operators = Operator.joins(:company).where(:companies => {:id => company_id})
+		@operators = Array.new(Operator.joins(:company).where(:companies => {:id => company_id}))
+    puts "operators count:" + @operators.count.to_s
+    @operators[@operators.count] = Operator.new
+    puts "operators count:" + @operators.count.to_s
 
 		# Compute the list of time intervals
 		day_start = DateTime.parse(a_date.to_s)
@@ -24,27 +27,44 @@ class Worksheet
 		end
 
 		puts "time_intervals:" + @time_intervals.size.to_s
+    puts "operators:" + @operators.inspect
+    puts "operators count:" + @operators.count.to_s
 
 		@meetings = Array.new
 		@operators.count.times { |op_index| 
 			@meetings[op_index] = Array.new
 			@time_intervals.count.times { |int_index|
 
-				meets = Meeting \
-					.joins(:company) \
-					.joins(:operator) \
-					.where(:companies => {:id => company_id}) \
-					.where(:operators => {:id => @operators[op_index].id}) \
-					.where([":start < start AND start < :end", { \
-						:start => @time_intervals[int_index][:start], \
-						:end => @time_intervals[int_index][:end]}]) \
-					.order(:start)		
+        if(@operators[op_index].id)
+
+				  meets = Meeting \
+					  .joins(:company) \
+					  .joins(:operator) \
+					  .where(:companies => {:id => company_id}) \
+					  .where(:operators => {:id => @operators[op_index].id}) \
+					  .where([":start < start AND start < :end", { \
+						  :start => @time_intervals[int_index][:start], \
+						  :end => @time_intervals[int_index][:end]}]) \
+					  .order(:start)		
+  
+        else
+
+				  meets = Meeting \
+					  .joins(:company) \
+					  .where(:companies => {:id => company_id}) \
+					  .where(:operator_id => nil) \
+					  .where([":start < start AND start < :end", { \
+						  :start => @time_intervals[int_index][:start], \
+						  :end => @time_intervals[int_index][:end]}]) \
+					  .order(:start)	
+
+        end
 
 				@meetings[op_index][int_index] = meets
 
-				puts op_index
-				puts int_index
-				puts meets
+				puts "op_index:" + op_index.to_s
+				puts "time_index:" + int_index.to_s
+				puts "meets:" + meets.inspect
 
 			}
 		}		

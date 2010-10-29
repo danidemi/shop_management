@@ -18,7 +18,11 @@
 	<thead>
 		<th></th>
 		<% @worksheet.operators.each do |operator| %>
-			<th><%= operator.first_name %> <%= operator.last_name %></th>
+      <% if operator.id %>
+			  <th><%= operator.first_name %> <%= operator.last_name %></th>
+      <% else %>
+        <th><%= t('meeting.no_operator') %></th>
+      <% end %>
 		<% end %>
 	</thead>
 
@@ -32,7 +36,6 @@
 					<div class="time">
 						<%= time_interval[:start].strftime("%H:%M") %>&nbsp;-&nbsp;<%= time_interval[:end].strftime("%H:%M") %>
             <%= link_to_function image_tag("icon_new_small.png", :border => 0), "newMeeting('#{time_interval[:start]}','#{time_interval[:end]}')" %>
-
 					<div>
 				</td>
 
