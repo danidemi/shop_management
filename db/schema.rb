@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema.define(:version => 20101010102533) do
 
-  create_table "companies", :force => true do |t|
+  create_table "apnt_companies", :force => true do |t|
     t.string   "name",             :null => false
     t.string   "email_originator", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "customers", :force => true do |t|
+  create_table "apnt_customers", :force => true do |t|
     t.integer  "company_id",    :null => false
     t.string   "firstName",     :null => false
     t.string   "lastName",      :null => false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20101010102533) do
     t.datetime "updated_at"
   end
 
-  create_table "delayed_jobs", :force => true do |t|
+  create_table "apnt_delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
     t.integer  "attempts",   :default => 0
     t.text     "handler"
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(:version => 20101010102533) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+  add_index "apnt_delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
-  create_table "meetings", :force => true do |t|
+  create_table "apnt_meetings", :force => true do |t|
     t.integer  "company_id",  :null => false
     t.integer  "customer_id", :null => false
     t.integer  "operator_id"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20101010102533) do
     t.datetime "updated_at"
   end
 
-  create_table "operators", :force => true do |t|
+  create_table "apnt_operators", :force => true do |t|
     t.integer  "company_id"
     t.string   "username",          :null => false
     t.string   "crypted_password",  :null => false
@@ -67,5 +67,11 @@ ActiveRecord::Schema.define(:version => 20101010102533) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "apnt_schema_migrations", :id => false, :force => true do |t|
+    t.string "version", :null => false
+  end
+
+  add_index "apnt_schema_migrations", ["version"], :name => "apnt_unique_schema_migrations", :unique => true
 
 end
