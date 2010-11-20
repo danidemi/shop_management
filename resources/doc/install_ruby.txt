@@ -1,0 +1,29 @@
+-- compile / build
+rm -r /accounts/demichelis/*
+./configure --prefix=/accounts/demichelis --disable-install-doc --enable-pthread --enable-shared; make; make install
+/accounts/demichelis/bin/ruby /accounts/tmp/rubygems-1.3.7/setup.rb install
+/accounts/demichelis/bin/gem install --no-rdoc --no-ri bundler
+/accounts/demichelis/bin/gem install --no-rdoc --no-ri rails
+
+--versione unbit
+
+
+--versione mia
+./configure --prefix=/accounts/demichelis --enable-pthread --enable-shared --with-openssl-dir=/usr --with-readline-dir=/usr --with-zlib-dir=/usr; make; make install
+
+
+/accounts/demichelis/bin/ruby /accounts/tmp/rubygems-1.3.7/setup.rb install
+/accounts/demichelis/bin/gem install --no-rdoc --no-ri bundle
+
+--apt
+apt-cache search zlib | less
+libsqlite3-dev
+zlib1g-dev
+zlib1g,
+libmysqlclient-dev
+apt-get -y install build-essential libssl-dev libreadline5-dev zlib1g-dev
+
+mount -t vboxsf [-o OPTIONS] sharename mountpoint
+
+
+/shop_management/public/
