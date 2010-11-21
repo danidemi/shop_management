@@ -4,11 +4,10 @@ class Worksheet
 
 	def build(a_date, company_id)
 
+    puts "########################################################"
 		# Retrieve the list of operators
-		@operators = Array.new(Operator.joins(:company).where(:companies => {:id => company_id}))
-    puts "operators count:" + @operators.count.to_s
+		@operators = Array.new(Operator.joins(:company).where(Company.table_name => {:id => company_id}))
     @operators[@operators.count] = Operator.new
-    puts "operators count:" + @operators.count.to_s
 
 		# Compute the list of time intervals
 		day_start = DateTime.parse(a_date.to_s)
@@ -26,9 +25,9 @@ class Worksheet
 			day_start = interval_end
 		end
 
-		puts "time_intervals:" + @time_intervals.size.to_s
-    puts "operators:" + @operators.inspect
+		puts "time_intervals size:" + @time_intervals.size.to_s
     puts "operators count:" + @operators.count.to_s
+    puts "operators:" + @operators.inspect
 
 		@meetings = Array.new
 		@operators.count.times { |op_index| 
@@ -36,22 +35,22 @@ class Worksheet
 			@time_intervals.count.times { |int_index|
 
         if(@operators[op_index].id)
-
+          puts "finding meetings for operator:" + @operators[op_index].id.to_s
 				  meets = Meeting \
 					  .joins(:company) \
 					  .joins(:operator) \
-					  .where(:companies => {:id => company_id}) \
-					  .where(:operators => {:id => @operators[op_index].id}) \
-					  .where([":start < start AND start < :end", { \
+					  .where(Company.table_name => {:id => company_id}) \
+					  .where(Operator.table_name => {:id => @operators[op_index].id}) \
+					  .where([":start <= start AND start < :end", { \
 						  :start => @time_intervals[int_index][:start], \
 						  :end => @time_intervals[int_index][:end]}]) \
 					  .order(:start)		
   
         else
-
+          puts "finding unassigned meetings:" + @operators[op_index].id.to_s
 				  meets = Meeting \
 					  .joins(:company) \
-					  .where(:companies => {:id => company_id}) \
+					  .where(Company.table_name => {:id => company_id}) \
 					  .where(:operator_id => nil) \
 					  .where([":start < start AND start < :end", { \
 						  :start => @time_intervals[int_index][:start], \
@@ -70,6 +69,7 @@ class Worksheet
 		}		
 
 		puts @meetings.inspect
+    puts "########################################################"
 
 		return self
 	end
@@ -104,7 +104,7 @@ class WorksheetsController < ApplicationController
 
 			meetings = Meeting \
 				.joins(:company) \
-				.where(:companies => {:id => current_operator.company.id}) \
+				.where(Company.table_name => {:id => current_operator.company.id}) \
 				.where([":start < start AND start < :end", {:start => interval_start, :end => interval_end}]) \
 				.order(:start)		
 
@@ -123,7 +123,9 @@ class WorksheetsController < ApplicationController
 		@date = params[:date] ? Date.parse(params[:date]) : Date.today
 		@worksheet = Worksheet.new
 		@worksheet.build(@date, current_operator.company.id)
-		@operators = Operator.select(:first_name, :last_name).joins(:company).where(:companies => {:id => current_operator.company.id})
+		@operators = Operator.select(:first_name.to_s + "," + :last_name.to_s) \
+        .joins(:company) \
+        .where(Company.table_name => {:id => current_operator.company.id})
 
     respond_to do |format|
     		format.html # index.html.erb
@@ -133,8 +135,8 @@ class WorksheetsController < ApplicationController
 	end
 
 	def new_from_worksheet
-		@customers = Customer.joins(:company).where(:companies => {:id => current_operator.company.id})
-		@operators = Operator.joins(:company).where(:companies => {:id => current_operator.company.id})
+		@customers = Customer.joins(:company).where(Company.table_name => {:id => current_operator.company.id})
+		@operators = Operator.joins(:company).where(Company.table_name => {:id => current_operator.company.id})
 
 		@meeting = Meeting.new
 		if params[:start] != nil then
@@ -152,13 +154,13 @@ class WorksheetsController < ApplicationController
 		if @meeting.save
 			@date = Date.parse(@meeting.start.to_s)
 			@worksheet = Worksheet.new.build(@date, current_operator.company.id)
-			@operators = Operator.select(:first_name, :last_name) \
+		  @operators = Operator.select(:first_name.to_s + "," + :last_name.to_s) \
 				.joins(:company) \
-				.where(:companies => {:id => current_operator.company.id})
+				.where(Company.table_name => {:id => current_operator.company.id})
 			render :action => "worksheet"
 		else
-		  @customers = Customer.joins(:company).where(:companies => {:id => current_operator.company.id})
-		  @operators = Operator.joins(:company).where(:companies => {:id => current_operator.company.id})
+		  @customers = Customer.joins(:company).where(Company.table_name => {:id => current_operator.company.id})
+		  @operators = Operator.joins(:company).where(Company.table_name => {:id => current_operator.company.id})
 			render :action => "new_from_worksheet"
 		end
 	end

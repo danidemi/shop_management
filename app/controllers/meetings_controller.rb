@@ -48,7 +48,7 @@ class MeetingsController < ApplicationController
   # GET /meetings.xml
   def index
 
-    @meetings = Meeting.joins(:company).where(:companies => {:id => current_operator.company.id})
+    @meetings = Meeting.joins(:company).where(Company.table_name => {:id => current_operator.company.id})
 
     respond_to do |format|
       format.html # index.html.erb
@@ -70,8 +70,8 @@ class MeetingsController < ApplicationController
   # GET /meetings/new
   # GET /meetings/new.xml
   def new
-		@customers = Customer.joins(:company).where(:companies => {:id => current_operator.company.id})
-		@operators = Operator.joins(:company).where(:companies => {:id => current_operator.company.id})
+		@customers = Customer.joins(:company).where(Company.table_name => {:id => current_operator.company.id})
+		@operators = Operator.joins(:company).where(Company.table_name => {:id => current_operator.company.id})
 
 		@meeting = Meeting.new
 		if @start != nil then
@@ -90,7 +90,7 @@ class MeetingsController < ApplicationController
   # GET /meetings/1/edit
   def edit
 		@customers = Customer.all
-		@operators = Operator.joins(:company).where(:companies => {:id => current_operator.company.id})
+		@operators = Operator.joins(:company).where(Company.table_name => {:id => current_operator.company.id})
     @meeting = Meeting.find(params[:id])
   end
 
@@ -105,8 +105,8 @@ class MeetingsController < ApplicationController
         format.html { redirect_to(@meeting, :notice => t(:meeting_notice_correctly_created) ) }
         format.xml  { render :xml => @meeting, :status => :created, :location => @meeting }
       else
-    		@customers = Customer.joins(:company).where(:companies => {:id => current_operator.company.id})
-    		@operators = Operator.joins(:company).where(:companies => {:id => current_operator.company.id})
+    		@customers = Customer.joins(:company).where(Company.table_name => {:id => current_operator.company.id})
+    		@operators = Operator.joins(:company).where(Company.table_name => {:id => current_operator.company.id})
         format.html { render :action => "new" }
         format.xml  { render :xml => @meeting.errors, :status => :unprocessable_entity }
       end

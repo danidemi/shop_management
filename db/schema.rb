@@ -68,8 +68,7 @@ ActiveRecord::Schema.define(:version => 20101010102533) do
     t.datetime "updated_at"
   end
 
-  create_table "apnt_schema_migrations", :id => false, :force => true do |t|
-    t.string "version", :null => false
+  create_table "apnt_schema_migrations", :primary_key => "version", :force => true do |t|
   end
 
   add_index "apnt_schema_migrations", ["version"], :name => "apnt_unique_schema_migrations", :unique => true

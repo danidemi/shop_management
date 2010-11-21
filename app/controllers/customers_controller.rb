@@ -27,11 +27,11 @@ class CustomersController < ApplicationController
     if @search.active?
       @customers = Customer \
         .joins(:company) \
-        .where(:companies => {:id => current_operator.company.id}) \
+        .where(Company.table_name => {:id => current_operator.company.id}) \
         .where(["firstName LIKE ? OR lastName LIKE ?", "%" + @search.term + "%", "%" + @search.term + "%"]) \
         .paginate :page => params[:page], :order => 'created_at ASC', :per_page => 10
     else
-      @customers = Customer.joins(:company).where(:companies => {:id => current_operator.company.id}) \
+      @customers = Customer.joins(:company).where(Company.table_name => {:id => current_operator.company.id}) \
       .paginate :page => params[:page], :order => 'created_at ASC', :per_page => 10
     end
     

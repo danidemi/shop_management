@@ -6,13 +6,7 @@ gem 'rails', '3.0.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', '1.2.5', :require => 'sqlite3'
-gem 'mysql', '2.8.1'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
+gem 'mysql2'
 
 # To use debugger
 # gem 'ruby-debug'

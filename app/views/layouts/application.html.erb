@@ -6,12 +6,14 @@
     <%= stylesheet_link_tag :all %>
     <%= javascript_include_tag :defaults %>
     <%= csrf_meta_tag %>
+    <link rel="icon" href="/favico.png" type="image/ico" />
+    <link rel="shortcut icon" href="/favico.png" type="image/ico" />
   </head>
 
   <body>
 
     <div id="header">
-	    <%= link_to t(:application_title), "/" %>
+	    <%= link_to t(:application_title), "/welcome/index" %>
 	     <small><%=t :application_tagline %></small>
     </div>
 

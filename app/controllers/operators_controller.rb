@@ -25,11 +25,11 @@ class OperatorsController < ApplicationController
     if @search.active?
       @operators = Operator \
         .joins(:company) \
-        .where(:companies => {:id => current_operator.company.id}) \
+        .where(Company.table_name => {:id => current_operator.company.id}) \
         .where(["first_name LIKE ? OR last_name LIKE ?", "%" + @search.term + "%", "%" + @search.term + "%"]) \
         .paginate :page => params[:page], :order => 'last_name ASC', :per_page => 10
     else
-      @operators = Operator.joins(:company).where(:companies => {:id => current_operator.company.id}) \
+      @operators = Operator.joins(:company).where(Company.table_name => {:id => current_operator.company.id}) \
       .paginate :page => params[:page], :order => 'last_name ASC', :per_page => 10
     end
     

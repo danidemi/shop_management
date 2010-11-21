@@ -8,7 +8,7 @@ class OperatorSessionsController < ApplicationController
    @operator_session = OperatorSession.new(params[:operator_session])  
    if @operator_session.save  
      flash[:notice] = "Successfully logged in."  
-     redirect_to root_url  
+     redirect_to :controller => :welcome, :action => :index
    else  
      render :action => 'new'  
    end  
