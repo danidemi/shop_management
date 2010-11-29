@@ -32,4 +32,4 @@ production:
   pool: 5
   username: demichelis
   password: Hqdg7929 
-  socket: /tmp/mysql.sock
+  socket: /var/run/mysqld/mysqld.sock

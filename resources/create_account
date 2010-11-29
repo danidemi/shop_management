@@ -1,0 +1,13 @@
+company = Company.create(
+	:name => "Estetica le Fate",
+  :email_originator => "Estetica le Fate <info@esteticalefate.it>"
+)
+
+operator = Operator.create(
+	:username	=> "pchiara",
+	:password	=> "pchiara_pwd",
+	:password_confirmation => "pchiara_pwd",
+	:first_name => "Chiara",
+	:last_name => "Pengo",
+	:company_id => company
+)

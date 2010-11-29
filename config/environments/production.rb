@@ -1,6 +1,5 @@
 ShopManagement::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
-  config.active_record.table_name_prefix = "apnt_"
 
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests

@@ -28,3 +28,7 @@ gem "will_paginate", "~> 3.0.pre2"
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+# This is required by UNBIT deploy infrastructure
+#gem 'thin', '1.2.7'
+#gem 'rack'
