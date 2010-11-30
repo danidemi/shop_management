@@ -33,7 +33,9 @@
 			  <%= current_operator.first_name %>
         <%= current_operator.last_name %>,
         <%= current_operator.company.name %>  
-			  <%= link_to t("login_profile"), edit_operator_path(:current) %>
+        <!--
+			  <%= link_to t("login_profile"), edit_operator_path(current_operator) %>
+        -->
         | 
         <%= link_to t("login_log_out"), logout_path %>  
 		  <% else %>  
