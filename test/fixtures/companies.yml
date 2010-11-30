@@ -1,5 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-company_one:
-  name: One s.n.c.
+company_test:
+  name: Test & c.
+  email_originator: test@test.com
 

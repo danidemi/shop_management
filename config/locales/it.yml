@@ -25,6 +25,13 @@ it:
   login_log_in: "Log In"
   login_log_out: "Log Out"
   login_profile: "Profilo"
+  login:
+    message:
+      failed: "Utente sconosciuto"
+      success: "Accesso eseguito"
+      logout: "Ti sei disconnesso correttamente"
+
+    
 
   # Reminder
   reminder_notice_correctly_sent: "Promemoria inviato con successo"

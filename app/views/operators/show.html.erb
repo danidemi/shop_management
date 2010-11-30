@@ -1,6 +1,6 @@
 <%= link_to image_tag("icon_edit.png", :border => 0), edit_operator_path(@operator) %>
 <%= link_to image_tag("icon_back.png", :border => 0), operators_path %>
-<p id="notice"><%= notice %></p>
+
 <p>
   <b><%= Operator.human_attribute_name(:first_name) %>:</b>
   <%= @operator.first_name %>
