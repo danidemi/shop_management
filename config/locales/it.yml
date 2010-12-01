@@ -26,6 +26,8 @@ it:
   login_log_out: "Log Out"
   login_profile: "Profilo"
   login:
+    username: "Username"
+    password: "Password"
     message:
       failed: "Utente sconosciuto"
       success: "Accesso eseguito"

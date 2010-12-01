@@ -1,25 +1,26 @@
 /* Flash */
 .flash_notice, .flash_warning, .flash_error {
-border: 1px solid;
-margin: 10px 0px;
-padding:15px 10px 15px 50px;
-background-repeat: no-repeat;
-background-position: 10px center;
+  clear: both;
+  border: 1px solid;
+  margin: 10px 0px;
+  padding:15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
 }
 .flash_notice {
-color: #4F8A10;
-background-color: #DFF2BF;
-background-image:url('../images/flash_notice.png');
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  background-image:url('../images/flash_notice.png');
 }
 .flash_warning {
-color: #9F6000;
-background-color: #FEEFB3;
-background-image: url('../images/flash_warning.png');
+  color: #9F6000;
+  background-color: #FEEFB3;
+  background-image: url('../images/flash_warning.png');
 }
 .flash_error {
-color: #D8000C;
-background-color: #FFBABA;
-background-image: url('../images/flash_error.png');
+  color: #D8000C;
+  background-color: #FFBABA;
+  background-image: url('../images/flash_error.png');
 }
 
 
@@ -79,6 +80,11 @@ table{
 	font-style:italic;
 }
 
+#menu_container {
+  float: none;
+  
+}
+
 #menu_container ul {
 	padding-left: 0;
 	margin-left: 0;
@@ -105,4 +111,9 @@ table{
 #menu_container ul li a:hover {
 	background-color: #369;
 	color: #fff;
+}
+
+#content {
+  clear: both;
+  
 }

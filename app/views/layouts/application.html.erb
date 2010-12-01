@@ -17,17 +17,6 @@
 	     <small><%=t :application_tagline %></small>
     </div>
 
-    <% if current_operator %>
-	    <div id="menu_container">
-		    <ul id="menu_list">
-          <li><%= link_to Operator.human_name(:count =>2), operators_path %></li>
-			    <li><%= link_to Customer.human_name(:count =>2), customers_path %></li>
-			    <li><%= link_to Meeting.human_name(:count =>2), meetings_path %></li>
-			    <li><%= link_to t("worksheet"), "/worksheets" %></li>
-		    </ul>
-	    </div>
-    <% end %>
-
 	  <div id="operator_nav">
 		  <% if current_operator %>
 			  <%= current_operator.first_name %>
@@ -39,13 +28,28 @@
         | 
         <%= link_to t("login_log_out"), logout_path %>  
 		  <% else %>  
-			  <%= form_for OperatorSession.new do |form| %>    
-						  <%= form.text_field :username, :size => 10 %>  
-						  <%= form.password_field :password, :size =>10 %>  
-						  <%= form.submit t("login_log_in") %>  
+			  <%= form_for OperatorSession.new do |form| %>
+          <%= t 'login.username' %>
+          <%= form.text_field :username, :size => 10 %>
+          <%= t 'login.password' %>
+          <%= form.password_field :password, :size =>10 %>
+          <%= form.submit t("login_log_in") %>
 			  <% end %> 
 		  <% end %>  
 	  </div>
+
+    <% if current_operator %>
+	    <div id="menu_container">
+		    <ul id="menu_list">
+          <li><%= link_to Operator.human_name(:count =>2), operators_path %></li>
+			    <li><%= link_to Customer.human_name(:count =>2), customers_path %></li>
+			    <li><%= link_to Meeting.human_name(:count =>2), meetings_path %></li>
+			    <li><%= link_to t("worksheet"), "/worksheets" %></li>
+		    </ul>
+	    </div>
+    <% end %>
+
+
 
     <% if flash && flash.count > 0 %>
     <div>
@@ -61,7 +65,7 @@
     <% end %>
     <div>
 
-    <div>
+    <div id="content">
       <%= yield %>
     </div>
 
