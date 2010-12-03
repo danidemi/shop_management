@@ -73,19 +73,18 @@ class OperatorsController < ApplicationController
   end
 
 	def edit
-		@operator = Operator.find(params[:id])
-		if @operator.update_attributes(params[:id])
-			flash[:notice] = t('operator.notice.correctly_updated')
-		else
-			render :action => 'edit'
-		end
+#		@operator = Operator.find(params[:id])
+#		if @operator.update_attributes(params[:id])
+#			flash[:notice] = t('operator.notice.correctly_updated')
+#		else
+#			render :action => 'edit'
+#		end
+    @operator = Operator.find(params[:id])
 	end
 
-  # PUT /customers/1
-  # PUT /customers/1.xml
+  
   def update
-    @operator = Customer.find(params[:id])
-
+    @operator = Operator.find(params[:id])
     respond_to do |format|
       if @operator.update_attributes(params[:operator])
         format.html { 

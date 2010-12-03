@@ -13,8 +13,23 @@
   <% end %>
 
 	<div class="field">
+		<%= form.label :first_name %><br />
+		<%= form.text_field :first_name %><br />
+	</div>
+
+	<div class="field">
+		<%= form.label :last_name %><br />
+		<%= form.text_field :last_name %><br />
+	</div>
+
+	<div class="field">
 		<%= form.label :username %><br />
-		<%= form.text_field :username %><br />
+    <% if Operator.exists?(@operator.id) %>
+      <%= @operator.username %>
+    <% else %>
+		  <%= form.text_field :username %>
+    <% end %>
+    <br />
 	</div>
 
 	<div class="field">
@@ -25,16 +40,6 @@
 	<div class="field">
 		<%= form.label :password_confirmation %><br />
 		<%= form.password_field :password_confirmation %><br />
-	</div>
-
-	<div class="field">
-		<%= form.label :first_name %><br />
-		<%= form.text_field :first_name %><br />
-	</div>
-
-	<div class="field">
-		<%= form.label :last_name %><br />
-		<%= form.text_field :last_name %><br />
 	</div>
 
 	<div class="actions">
