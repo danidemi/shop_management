@@ -40,6 +40,9 @@
     <% if current_operator %>
 	    <div id="menu_container">
 		    <ul id="menu_list">
+          <% if current_operator.role == :application_admin.to_s %>
+            <li><%= link_to Company.human_name(:count =>2), companies_path %></li>
+          <% end %>
           <li><%= link_to Operator.human_name(:count =>2), operators_path %></li>
 			    <li><%= link_to Customer.human_name(:count =>2), customers_path %></li>
 			    <li><%= link_to Meeting.human_name(:count =>2), meetings_path %></li>

@@ -19,6 +19,9 @@ ShopManagement::Application.routes.draw do
 	# Customers
 	resources :customers
 
+	# Companies
+	resources :companies
+
 	# Home
 	root :to => "welcome#index"
 	get "welcome/index"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101010102533) do
+ActiveRecord::Schema.define(:version => 20101203231759) do
 
   create_table "apnt_companies", :force => true do |t|
     t.string   "name",             :null => false
@@ -58,14 +58,15 @@ ActiveRecord::Schema.define(:version => 20101010102533) do
 
   create_table "apnt_operators", :force => true do |t|
     t.integer  "company_id"
-    t.string   "username",          :null => false
-    t.string   "crypted_password",  :null => false
-    t.string   "password_salt",     :null => false
+    t.string   "username",                                  :null => false
+    t.string   "crypted_password",                          :null => false
+    t.string   "password_salt",                             :null => false
     t.string   "persistence_token"
-    t.string   "first_name",        :null => false
-    t.string   "last_name",         :null => false
+    t.string   "first_name",                                :null => false
+    t.string   "last_name",                                 :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role",              :default => "operator", :null => false
   end
 
   create_table "apnt_schema_migrations", :primary_key => "version", :force => true do |t|

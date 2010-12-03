@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Mayor.create(:name => 'Daley', :city => cities.first)
-
 # Demo company, a lot of data
 
 company_demo = Company.create(
@@ -19,7 +11,8 @@ operator_demo_1 = Operator.create(
 	:password_confirmation => "demo1",
 	:first_name => "Paolo",
 	:last_name => "Sprits",
-	:company_id => company_demo
+	:company_id => company_demo,
+  :role => :operator
 )
 
 operator_demo_2 = Operator.create(
@@ -28,7 +21,8 @@ operator_demo_2 = Operator.create(
 	:password_confirmation => "demo2",
 	:first_name => "Gianna",
 	:last_name => "Libris",
-	:company_id => company_demo
+	:company_id => company_demo,
+  :role => :operator
 )
 
 100.times { |i|
