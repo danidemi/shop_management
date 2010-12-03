@@ -92,6 +92,9 @@ it:
             last_name:
               blank: "Manca il cognome"
     models:
+      company:
+        one: "Azienda"
+        other: "Aziende"
       customer:
         one: "Cliente"
         other: "Clienti"
@@ -102,6 +105,11 @@ it:
         one: "Operatore"
         other: "Operatori"
     attributes:
+      company:
+        name: "Denominazione"
+        email_originator: "Mittente Email"
+        created_at: "Data Creazione"
+        updated_at: "Data Ultimo Aggiornamento"
       customer:
         firstName: "Nome"
         lastName: "Cognome"
