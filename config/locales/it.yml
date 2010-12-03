@@ -54,6 +54,9 @@ it:
     notice:
       correctly_created: "L'operatore è stato creato correttamente"
       correctly_updated: "L'operatore è stato aggiornato correttamente"
+      correctly_removed: "L'operatore è stato rimosso con successo"
+    error
+      cannot_remove_self: "Non puoi rimuovere il tuo stesso account"
 
   # Activerecords
   activerecord:

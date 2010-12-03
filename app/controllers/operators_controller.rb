@@ -73,12 +73,6 @@ class OperatorsController < ApplicationController
   end
 
 	def edit
-#		@operator = Operator.find(params[:id])
-#		if @operator.update_attributes(params[:id])
-#			flash[:notice] = t('operator.notice.correctly_updated')
-#		else
-#			render :action => 'edit'
-#		end
     @operator = Operator.find(params[:id])
 	end
 
@@ -101,11 +95,14 @@ class OperatorsController < ApplicationController
     end
   end
 
-  # DELETE /customers/1
-  # DELETE /customers/1.xml
   def destroy
     @operator = Operator.find(params[:id])
-    @operator.destroy
+    if @current_operator != @operator
+      @operator.destroy
+      flash[:notice]= t('operator.notice.correctly_removed')
+    else
+      flash[:error]= t('operator.error.cannot_remove_self')
+    end
 
     respond_to do |format|
       format.html { redirect_to(operators_url) }

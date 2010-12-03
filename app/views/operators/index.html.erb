@@ -23,7 +23,15 @@
       <!--
 			<td><%= link_to image_tag("icon_edit.png", :border => 0), edit_operator_path(operator) %></td>
       -->
-			<td><%= link_to image_tag("icon_delete.png", :border => 0), operator, :confirm => t('generic.button.delete.confirmation'), :method => :delete %></td>
+			<td>
+        <% if @current_operator != operator %>
+          <%= link_to \
+                image_tag("icon_delete.png", :border => 0), \
+                operator, \
+                :confirm => t('generic.button.delete.confirmation'), \
+                :method => :delete %>
+        <% end %>
+      </td>
 		</tr>
 	<% end %>
 </table>
