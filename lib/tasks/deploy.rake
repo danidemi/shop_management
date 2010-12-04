@@ -3,21 +3,33 @@ require 'yaml'
 def setup
   if $file_name == nil
     $file_name = 'application.tar.bz2'
-    $config = YAML::load_file 'deploy.yaml'
+    $config = YAML::load_file 'deploy.yml'
   end
+end
+
+def header title
+  puts "\n"
+  puts "******************************"
+  puts title
+  puts "******************************"
+end
+
+def command cmd
+  puts cmd
+  system cmd
 end
 
 desc "Clean files produced by last deploy"
 task 'deploy:clean' do |t|
     setup
-    puts "cleaning"
-    system "rm #{$file_name}"
+    header "cleaning"
+    command "rm #{$file_name}"
 end
 
 desc "Compress the app"
 task 'deploy:archive' => ['deploy:clean'] do |t|
     setup
-    puts "archiving"
+    header "archiving"
 
     #add items to be compressed here
     items = Array.new
@@ -38,13 +50,14 @@ task 'deploy:archive' => ['deploy:clean'] do |t|
     end
     files_line.strip!
 
-    system "tar --create --bzip2 --file=#{$file_name} #{files_line}"
+    command "tar --create --bzip2 --verbose --file=#{$file_name} #{files_line}"
 end
 
 desc 'Upload files to server'
-task 'deploy:upload' do |t|
+task 'deploy:upload' => ['deploy:archive'] do |t|
   setup
-  system "scp -P #{$config[:stp_port.to_s]} #{$file_name} #{$config[:stp_url.to_s]}"
+  header "uploading"
+  command "scp -P #{$config[:scp_port.to_s]} #{$file_name} #{$config[:scp_url.to_s]}"
 end
 
 
