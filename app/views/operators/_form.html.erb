@@ -24,7 +24,7 @@
 
 	<div class="field">
 		<%= form.label :username %><br />
-    <% if Operator.exists?(@operator.id) %>
+    <% if @operator.username && @operator.username.length > 0 %>
       <%= @operator.username %>
     <% else %>
 		  <%= form.text_field :username %>
