@@ -69,7 +69,8 @@ ActiveRecord::Schema.define(:version => 20101203231759) do
     t.string   "role",              :default => "operator", :null => false
   end
 
-  create_table "apnt_schema_migrations", :primary_key => "version", :force => true do |t|
+  create_table "apnt_schema_migrations", :id => false, :force => true do |t|
+    t.string "version", :null => false
   end
 
   add_index "apnt_schema_migrations", ["version"], :name => "apnt_unique_schema_migrations", :unique => true

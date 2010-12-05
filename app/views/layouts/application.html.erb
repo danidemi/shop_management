@@ -14,8 +14,11 @@
 
     <div id="header">
 	    <%= link_to t(:application_title), "/welcome/index" %>
-	     <small><%=t :application_tagline %></small>
+      <br>
+	    <small><%=t :application_tagline %></small>
     </div>
+
+
 
 	  <div id="operator_nav">
 		  <% if current_operator %>
@@ -36,6 +39,7 @@
 			  <% end %> 
 		  <% end %>  
 	  </div>
+
 
     <% if current_operator %>
 	    <div id="menu_container">

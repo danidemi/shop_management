@@ -1,88 +1,43 @@
-/* Flash */
-.flash_notice, .flash_warning, .flash_error {
-  clear: both;
-  border: 1px solid;
-  margin: 10px 0px;
-  padding:15px 10px 15px 50px;
-  background-repeat: no-repeat;
-  background-position: 10px center;
-}
-.flash_notice {
-  color: #4F8A10;
-  background-color: #DFF2BF;
-  background-image:url('../images/flash_notice.png');
-}
-.flash_warning {
-  color: #9F6000;
-  background-color: #FEEFB3;
-  background-image: url('../images/flash_warning.png');
-}
-.flash_error {
-  color: #D8000C;
-  background-color: #FFBABA;
-  background-image: url('../images/flash_error.png');
-}
-
-
-
-/* Tables */
-tr.odd {
-  background-color: white;
-}
-
-tr.even {
-  background-color: white;
-}
-
-table{
-  border: "0";
-}
-
-#operator_nav {
-  text-align: right;
-}
-
-#worksheet {
-	border: 2px solid black;
-	border-collapse:collapse;
-}
-
-#worksheet td {
-	vertical-align: top;
-	border: 1px solid black;
-	padding:2px;
-	width:100px;
-}
-
-#worksheet .meeting {
-	background-color: #DFD;
-	border: 1px solid green;
-	margin: 2px;
-	padding: 2px;
-}
-
-#worksheet .time {
-	margin: 2px;
-	padding: 2px;
-	font-family: monospace;
-}
+/* Header */
 
 #header {
 	font-family: arial, helvetica, sans-serif;
 	color: green;
 	font-size: large;
+  float: left;
 }
 
 #header small{
 	font-family: arial, helvetica, sans-serif;
 	color: green;
-	font-size: large;
+	font-size: normal;
 	font-style:italic;
 }
 
+
+
+
+
+/* Navigation */
+
+#operator_nav {
+  text-align: right;
+  float: right;
+}
+
+#operator_nav.login {
+  text-align: right;
+  float: right;
+}
+
+
+
+
+/* Menu */
+
 #menu_container {
   float: none;
-  
+  clear: both;
 }
 
 #menu_container ul {
@@ -113,7 +68,92 @@ table{
 	color: #fff;
 }
 
+
+
+
+
+/* Flashes */
+
+.flash_notice, .flash_warning, .flash_error {
+  clear: both;
+  border: 1px solid;
+  margin: 10px 0px;
+  padding:15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+}
+.flash_notice {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  background-image:url('../images/flash_notice.png');
+}
+.flash_warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+  background-image: url('../images/flash_warning.png');
+}
+.flash_error {
+  color: #D8000C;
+  background-color: #FFBABA;
+  background-image: url('../images/flash_error.png');
+}
+
+
+
+/* Content */
+
 #content {
   clear: both;
   
+}
+
+
+
+
+
+/* Tables */
+
+tr.odd {
+  background-color: white;
+}
+
+tr.even {
+  background-color: white;
+}
+
+table{
+  border: "0";
+}
+
+
+
+
+
+
+
+/* Worksheet */
+
+#worksheet {
+	border: 2px solid black;
+	border-collapse:collapse;
+}
+
+#worksheet td {
+	vertical-align: top;
+	border: 1px solid black;
+	padding:2px;
+	width:100px;
+}
+
+#worksheet .meeting {
+	background-color: #DFD;
+	border: 1px solid green;
+	margin: 2px;
+	padding: 2px;
+}
+
+#worksheet .time {
+	margin: 2px;
+	padding: 2px;
+	font-family: monospace;
 }
