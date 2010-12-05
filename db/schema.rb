@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101203231759) do
+ActiveRecord::Schema.define(:version => 20101205150817) do
 
   create_table "apnt_companies", :force => true do |t|
     t.string   "name",             :null => false
@@ -46,14 +46,15 @@ ActiveRecord::Schema.define(:version => 20101203231759) do
   add_index "apnt_delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "apnt_meetings", :force => true do |t|
-    t.integer  "company_id",  :null => false
-    t.integer  "customer_id", :null => false
+    t.integer  "company_id",                     :null => false
+    t.integer  "customer_id",                    :null => false
     t.integer  "operator_id"
-    t.datetime "start",       :null => false
-    t.datetime "end",         :null => false
+    t.datetime "start",                          :null => false
+    t.datetime "end",                            :null => false
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "alert_sent",  :default => false, :null => false
   end
 
   create_table "apnt_operators", :force => true do |t|
@@ -69,8 +70,7 @@ ActiveRecord::Schema.define(:version => 20101203231759) do
     t.string   "role",              :default => "operator", :null => false
   end
 
-  create_table "apnt_schema_migrations", :id => false, :force => true do |t|
-    t.string "version", :null => false
+  create_table "apnt_schema_migrations", :primary_key => "version", :force => true do |t|
   end
 
   add_index "apnt_schema_migrations", ["version"], :name => "apnt_unique_schema_migrations", :unique => true

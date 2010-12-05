@@ -1,4 +1,7 @@
-class AlertJob < Struct.new(:notifier_method,:meeting_id)
+#class AlertJob < Struct.new("SuperAlert", :notifier_method,:meeting_id)
+class AlertJob
+
+  attr_accessor :notifier_method, :meeting_id
 
   def perform
 

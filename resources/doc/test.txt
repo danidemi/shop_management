@@ -1,0 +1,12 @@
+Setting up a db for testing seems quite awkward.
+This is the procedure that worked.
+
+bundle exec rake db:drop:all
+bundle exec rake db:create
+bundle exec rake db:migrate
+bundle exec rake db:seed
+bundle exec rake db:test:clone_structure
+
+
+
+

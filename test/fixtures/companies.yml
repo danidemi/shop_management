@@ -1,6 +1,2 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-company_test:
-  name: Test & c.
-  email_originator: test@test.com
-
