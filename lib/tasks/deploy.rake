@@ -33,6 +33,7 @@ task 'deploy:archive' => ['deploy:clean'] do |t|
 
     #add items to be compressed here
     items = Array.new
+    items << 'script'
     items << 'app'
     items << 'config'
     items << 'db'
