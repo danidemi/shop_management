@@ -3,12 +3,12 @@
 <%= link_to image_tag("icon_reminder.png", :border => 0), :controller => :meetings, :action => :send_reminder, :id => @meeting.id %>
 
 <p>
-  <b><%=Customer.human_name%>:</b>
+  <b><%=Customer.model_name.human%>:</b>
 	<%= @meeting.customer.firstName %> <%= @meeting.customer.lastName %>
 </p>
 
 <p>
-  <b><%=Operator.human_name%>:</b>
+  <b><%=Operator.model_name.human%>:</b>
   <% if @meeting.operator %>
   	<%= @meeting.operator.first_name %> <%= @meeting.operator.last_name %>
   <% else %>

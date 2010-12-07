@@ -1,3 +1,3 @@
-<h1><%=Customer.human_name%></h1>
+<h1><%=Customer.model_name.human%></h1>
 <%= link_to image_tag("icon_back.png", :border => 0), customers_path %>
 <%= render 'form' %>
