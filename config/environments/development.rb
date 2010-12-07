@@ -26,7 +26,7 @@ ShopManagement::Application.configure do
 #  } 
 
   #Sendmail
-  config.action_mailer.delivery_method = :sendmail 
+  config.action_mailer.delivery_method = :sendmail
 #  #Google
 #  config.action_mailer.smtp_settings = {  
 #    :address => "smtp.gmail.com",  
