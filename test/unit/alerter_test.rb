@@ -25,6 +25,18 @@ class CounterSenderError < CounterSender
   end
 end
 
+class AlerterSenderTest < ActiveSupport::TestCase
+  test "should send a message" do
+    meeting = Meeting.find(meetings(:to_send).id)
+    sender = AlerterSender.new
+    assert_nil meeting.alert_sent
+    sender.accept(meeting)
+
+    meeting_db = Meeting.find(meeting.id)
+    assert_not_nil meeting_db.alert_sent
+  end
+end
+
 class AlerterTest < ActiveSupport::TestCase
 
   test "should not select meetings if alert has been already sent" do

@@ -26,6 +26,9 @@ ShopManagement::Application.routes.draw do
 	root :to => "welcome#index"
 	get "welcome/index"
 
+  # Cron
+  match 'cron/send_alerts/' => 'cron#send_alerts'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
