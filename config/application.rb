@@ -9,8 +9,6 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 module ShopManagement
   class Application < Rails::Application
     
-    config.active_record.table_name_prefix = "apnt_"
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

@@ -1,2 +1,3 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
+beauty_farm:
+  name: BeautyFarm
+  email_originator: info@beauty-farm.com

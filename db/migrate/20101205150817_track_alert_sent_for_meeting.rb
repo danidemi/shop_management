@@ -1,6 +1,6 @@
 class TrackAlertSentForMeeting < ActiveRecord::Migration
   def self.up
-    add_column :meetings, :alert_sent, :boolean, {:default=>false, :null=>false}
+    add_column :meetings, :alert_sent, :datetime, {:default=>nil, :null=>true}
   end
 
   def self.down

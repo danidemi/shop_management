@@ -16,16 +16,24 @@
 
 	<div class="field">
 		<%= form.label :customer %><br />
-		<%= form.select :customer_id, @customers.collect{|c| [c.firstName + " " + c.lastName, c.id]} %><br />
+    <% if @customers!=nil %>
+		  <%= form.select :customer_id, @customers.collect{|c| [c.firstName + " " + c.lastName, c.id]} %><br />
+    <% else %>
+      <!-- no customers -->
+    <% end %>
 	</div>
 
 	<div class="field">
 		<%= form.label :operator %>
     <br />
-		<%= form.select \
-          :operator_id, \
-          @operators.collect{ |opr| [opr.first_name + " " + opr.last_name, opr.id]}, \
-          {:include_blank => t("meeting.no_operator")} %>
+    <% if @operators!=nil %>
+		  <%= form.select \
+            :operator_id, \
+            @operators.collect{ |opr| [opr.first_name + " " + opr.last_name, opr.id]}, \
+            {:include_blank => t("meeting.no_operator")} %>
+    <% else %>
+      <!-- no operators -->
+    <% end %>
     <br />
 	</div>
 

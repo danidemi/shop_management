@@ -1,8 +1,7 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-#one:
-#  username: usr1
-#  password: pwd1
-#  first_name: OpName1
-#  last_name: OpSurname1
-#  company: 
+john:
+  company: beauty_farm
+  first_name: john
+  last_name: doe
+  crypted_password: xxx
+  password_salt: xxx
+  persistence_token: xxx

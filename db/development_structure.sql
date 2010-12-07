@@ -1,4 +1,4 @@
-CREATE TABLE `apnt_companies` (
+CREATE TABLE `companies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email_originator` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE `apnt_companies` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `apnt_customers` (
+CREATE TABLE `customers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `company_id` int(11) NOT NULL,
   `firstName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE `apnt_customers` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `apnt_delayed_jobs` (
+CREATE TABLE `delayed_jobs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `priority` int(11) DEFAULT '0',
   `attempts` int(11) DEFAULT '0',
@@ -36,7 +36,7 @@ CREATE TABLE `apnt_delayed_jobs` (
   KEY `delayed_jobs_priority` (`priority`,`run_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `apnt_meetings` (
+CREATE TABLE `meetings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `company_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -46,11 +46,11 @@ CREATE TABLE `apnt_meetings` (
   `notes` text COLLATE utf8_unicode_ci,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `alert_sent` tinyint(1) NOT NULL DEFAULT '0',
+  `alert_sent` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `apnt_operators` (
+CREATE TABLE `operators` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `company_id` int(11) DEFAULT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -65,21 +65,21 @@ CREATE TABLE `apnt_operators` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `apnt_schema_migrations` (
+CREATE TABLE `schema_migrations` (
   `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  UNIQUE KEY `apnt_unique_schema_migrations` (`version`)
+  UNIQUE KEY `unique_schema_migrations` (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO apnt_schema_migrations (version) VALUES ('20100925124700');
+INSERT INTO schema_migrations (version) VALUES ('20100925124700');
 
-INSERT INTO apnt_schema_migrations (version) VALUES ('20100925124706');
+INSERT INTO schema_migrations (version) VALUES ('20100925124706');
 
-INSERT INTO apnt_schema_migrations (version) VALUES ('20100925130200');
+INSERT INTO schema_migrations (version) VALUES ('20100925130200');
 
-INSERT INTO apnt_schema_migrations (version) VALUES ('20100925130208');
+INSERT INTO schema_migrations (version) VALUES ('20100925130208');
 
-INSERT INTO apnt_schema_migrations (version) VALUES ('20101010102533');
+INSERT INTO schema_migrations (version) VALUES ('20101010102533');
 
-INSERT INTO apnt_schema_migrations (version) VALUES ('20101203231759');
+INSERT INTO schema_migrations (version) VALUES ('20101203231759');
 
-INSERT INTO apnt_schema_migrations (version) VALUES ('20101205150817');
+INSERT INTO schema_migrations (version) VALUES ('20101205150817');

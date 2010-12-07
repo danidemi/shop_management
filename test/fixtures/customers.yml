@@ -1,8 +1,15 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+charlize:
+  company: beauty_farm
+  firstName: Charlize
+  lastName: Teron
+  landlinePhone: +1-555
+  mobilePhone: +1+666
+  email: charlize@mail.com
 
-#customer_alvin:
-#  firstName: Alvin
-#  lastName: Melvin
-#  landlinePhone: +39021111111
-#  mobilePhone: +393407777777
-#  email: alvin@domain.com
+one:
+  company: beauty_farm
+  firstName: Susy
+  lastName: Mc Namara
+  landlinePhone: +1-333
+  mobilePhone: +1+333
+  email: s.namara@elgoog.com

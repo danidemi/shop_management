@@ -41,3 +41,4 @@ production:
   username: demichelis
   password: Hqdg7929 
   socket: /var/run/mysqld/mysqld.sock
+

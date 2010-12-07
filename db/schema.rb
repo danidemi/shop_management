@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema.define(:version => 20101205150817) do
 
-  create_table "apnt_companies", :force => true do |t|
+  create_table "companies", :force => true do |t|
     t.string   "name",             :null => false
     t.string   "email_originator", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "apnt_customers", :force => true do |t|
+  create_table "customers", :force => true do |t|
     t.integer  "company_id",    :null => false
     t.string   "firstName",     :null => false
     t.string   "lastName",      :null => false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20101205150817) do
     t.datetime "updated_at"
   end
 
-  create_table "apnt_delayed_jobs", :force => true do |t|
+  create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
     t.integer  "attempts",   :default => 0
     t.text     "handler"
@@ -43,21 +43,21 @@ ActiveRecord::Schema.define(:version => 20101205150817) do
     t.datetime "updated_at"
   end
 
-  add_index "apnt_delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
-  create_table "apnt_meetings", :force => true do |t|
-    t.integer  "company_id",                     :null => false
-    t.integer  "customer_id",                    :null => false
+  create_table "meetings", :force => true do |t|
+    t.integer  "company_id",  :null => false
+    t.integer  "customer_id", :null => false
     t.integer  "operator_id"
-    t.datetime "start",                          :null => false
-    t.datetime "end",                            :null => false
+    t.datetime "start",       :null => false
+    t.datetime "end",         :null => false
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "alert_sent",  :default => false, :null => false
+    t.datetime "alert_sent"
   end
 
-  create_table "apnt_operators", :force => true do |t|
+  create_table "operators", :force => true do |t|
     t.integer  "company_id"
     t.string   "username",                                  :null => false
     t.string   "crypted_password",                          :null => false
@@ -69,10 +69,5 @@ ActiveRecord::Schema.define(:version => 20101205150817) do
     t.datetime "updated_at"
     t.string   "role",              :default => "operator", :null => false
   end
-
-  create_table "apnt_schema_migrations", :primary_key => "version", :force => true do |t|
-  end
-
-  add_index "apnt_schema_migrations", ["version"], :name => "apnt_unique_schema_migrations", :unique => true
 
 end
