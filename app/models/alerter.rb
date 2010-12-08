@@ -25,15 +25,10 @@ end
 class AlerterSender
   def accept meeting
 
-    puts meeting.inspect
-
     message = AlertMailer.reminder( meeting );
-    puts 'message body:' + message.body.decoded
     message.deliver
 
     meeting.alert_sent = DateTime.now
-    puts meeting.inspect
-    #meeting.save!
     meeting.update_attribute :alert_sent, DateTime.now
     
   end

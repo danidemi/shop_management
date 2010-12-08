@@ -38,6 +38,10 @@ it:
   # Reminder
   reminder_notice_correctly_sent: "Promemoria inviato con successo"
   reminder_mail_subject: "Promemoria Appuntamento"
+  reminder:
+    mail:
+      sender: "Servizio Promemoria"
+
 
   # Customer
   customer_notice_correctly_updated: "Il dati del cliente sono stati correttamente memorizzati"
