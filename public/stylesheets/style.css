@@ -145,9 +145,16 @@ table{
 	width:100px;
 }
 
-#worksheet .meeting {
+#worksheet .meeting_alerted {
 	background-color: #DFD;
 	border: 1px solid green;
+	margin: 2px;
+	padding: 2px;
+}
+
+#worksheet .meeting_unalerted {
+	background-color: #CCC;
+	border: 1px solid gray;
 	margin: 2px;
 	padding: 2px;
 }

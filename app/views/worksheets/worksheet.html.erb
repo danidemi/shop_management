@@ -44,7 +44,7 @@
 						<% meetings = @worksheet.meetings_for(i, j) %>
 						<% if meetings
 							meetings.each do |meeting| %>
-								<div class="meeting">
+								<div class="<%= meeting.alerted? ? :meeting_alerted : :meeting_unalerted %>">
                   <div>
                     <%= link_to image_tag("icon_show_small.png", :border => 0), meeting_path(meeting) %>  
                   </div>
