@@ -30,4 +30,11 @@ class Meeting < ActiveRecord::Base
       !start.blank? and !self.end.blank? and self.end < start
   end
 
+  # Business
+
+  # Whether the alert for this meeting has been already delivered or not
+  def alerted?
+    !alert_sent.nil?
+  end
+
 end
