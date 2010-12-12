@@ -1,3 +1,10 @@
+mrs_marple:
+  company: beauty_farm
+  firstName: Johanne
+  lastName: Mrs. Marple
+  landlinePhone: +1-222
+  mobilePhone: +1+444
+
 charlize:
   company: beauty_farm
   firstName: Charlize
