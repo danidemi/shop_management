@@ -1,19 +1,23 @@
 <h1><%=Company.human_name(:count =>2)%></h1>
 <table>
-  <tr>
-    <th><%= Company.human_attribute_name(:name) %></th>
-    <th><%= Company.human_attribute_name(:email_originator) %></th>
-    <th><%= Company.human_attribute_name(:created_at) %></th>
-    <th><%= Company.human_attribute_name(:updated_at) %></th>
-    <th colspan="3"></th>
-  </tr>
-  <% @companies.each do |company| %>
+  <thead>
     <tr>
-      <td><%= company.name %></td>
-      <td><%= company.email_originator %></td>
-      <td><%= company.created_at %></td>
-      <td><%= company.updated_at %></td>
-      <td colspan="3"></th>
+      <th><%= Company.human_attribute_name(:name) %></th>
+      <th><%= Company.human_attribute_name(:email_originator) %></th>
+      <th><%= Company.human_attribute_name(:created_at) %></th>
+      <th><%= Company.human_attribute_name(:updated_at) %></th>
+      <th colspan="3"></th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.name %></td>
+        <td><%= company.email_originator %></td>
+        <td><%= company.created_at %></td>
+        <td><%= company.updated_at %></td>
+        <td colspan="3"></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

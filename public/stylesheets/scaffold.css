@@ -12,9 +12,17 @@ pre {
   font-size: 11px;
 }
 
+/*
+a img { border: 0px; }
+a:hover img {
+    border: 0px;
+    color: white;
+    background-color:white;
+}
 a { color: #000; }
 a:visited { color: #666; }
 a:hover { color: #fff; background-color:#000; }
+*/
 
 div.field, div.actions {
   margin-bottom: 10px;

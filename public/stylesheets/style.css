@@ -164,3 +164,42 @@ table{
 	padding: 2px;
 	font-family: monospace;
 }
+
+
+
+
+
+/* The table meant to show a list of editable items */
+table.items {
+  border-width: 0px;
+  border-style: none;
+  border-collapse: collapse;
+}
+
+/* Extra style to be applied on a hovering element */
+.hovering {
+  background-color: #33F;
+  color: white;
+}
+
+table.items td.controls {
+  width: 120px;
+  border-bottom: none;
+}
+
+table.items div.controls {
+  display: none;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+table.items td {
+  height:38px;
+  border-width: 0px;
+  border-top: none;
+  border-left: none;
+  border-right: none;  
+  border-bottom: 1px solid black;  
+  padding-right: 5px;
+  padding-left: 5px;
+}

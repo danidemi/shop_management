@@ -6,34 +6,38 @@
   <%= image_submit_tag 'icon_search.png' %>
 <% end %>
 
-<table>
+
+<table class="items">
+  <thead>
 	<tr>
 		<th><%= Operator.human_attribute_name(:first_name) %></th>
 		<th><%= Operator.human_attribute_name(:last_name) %></th>
 		<th><%= Operator.human_attribute_name(:username) %></th>
-		<th colspan="2"></th>
+		<th colspan="1"></th>
 	</tr>
-
-	<% @operators.each do |operator| %>
-		<tr class="<%= cycle(:odd,:even)%>">
-			<td><%= operator.first_name %></td>
-			<td><%= operator.last_name %></td>
-			<td><%= operator.username %></td>
-			<td><%= link_to image_tag("icon_show.png", :border => 0), operator %></td>
-      <!--
-			<td><%= link_to image_tag("icon_edit.png", :border => 0), edit_operator_path(operator) %></td>
-      -->
-			<td>
-        <% if @current_operator != operator %>
-          <%= link_to \
+  </thead>
+  <tbody>
+    <% @operators.each do |operator| %>
+      <tr>
+        <td><%= operator.first_name %></td>
+        <td><%= operator.last_name %></td>
+        <td><%= operator.username %></td>
+        <td class="controls">
+          <div class="controls">
+            <%= link_to image_tag("icon_show.png", :border => 0), operator %>
+            <%= link_to image_tag("icon_edit.png", :border => 0), edit_operator_path(operator) %>
+            <% if @current_operator != operator %>
+              <%= link_to \
                 image_tag("icon_delete.png", :border => 0), \
                 operator, \
                 :confirm => t('generic.button.delete.confirmation'), \
                 :method => :delete %>
-        <% end %>
-      </td>
-		</tr>
-	<% end %>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <%= will_paginate @operators %>

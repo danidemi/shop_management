@@ -4,5 +4,6 @@ log/*.log
 tmp/**/*
 deploy.yml
 application.tar.bz2
+nbproject
 
 
