@@ -1,50 +1,71 @@
 <% content_for :head do %>
   <script type = "text/javascript">
-
+    $j(document).ready(function(){
+      $j(".btn_show").click(function(){
+        $j("#split_dynamic").load('customers/1/edit');
+        /*
+        $j.get(
+          "http://www.google.com",
+          {id: "4"},
+          function(data){
+            $j(".split_dynamic").html(data);
+          }
+        );
+        */
+      });
+    });
   </script>
 <% end %>
 
 <h1><%=Customer.human_name(:count =>2)%></h1>
-<%= link_to image_tag("icon_new.png", :border => 0), new_customer_path %>
 
-<%= form_for :search, :url => customers_path, :html => {:method => :get} do |f| %>
-  <%= f.search_field :term %>
-  <%= image_submit_tag 'icon_search.png' %>
-<% end %>
+<div id="split_main">
+  <%= link_to image_tag("icon_new.png", :border => 0), new_customer_path %>
 
-<table class="items">
-  <thead>
-	  <tr>
-		  <th><%= Customer.human_attribute_name(:firstName) %></th>
-		  <th><%= Customer.human_attribute_name(:lastName) %></th>
-		  <th><%= Customer.human_attribute_name(:landlinePhone) %></th>
-		  <th><%= Customer.human_attribute_name(:mobilePhone) %></th>
-		  <th><%= Customer.human_attribute_name(:email) %></th>
-		  <th colspan="1"></th>
-	  </tr>
-  </thead>
-  
-  <tbody>
-    <% @customers.each do |customer| %>
+  <%= form_for :search, :url => customers_path, :html => {:method => :get} do |f| %>
+    <%= f.search_field :term %>
+    <%= image_submit_tag 'icon_search.png' %>
+  <% end %>
+  <table class="items">
+    <thead>
       <tr>
-        <td><%= customer.firstName %></td>
-        <td><%= customer.lastName %></td>
-        <td><%= customer.landlinePhone %></td>
-        <td><%= customer.mobilePhone %></td>
-        <td><%= customer.email %></td>
-        <td class="controls">
-          <div class="controls">
-            <%= link_to image_tag("icon_show.png", :border => 0), customer %>
-            <%= link_to image_tag("icon_edit.png", :border => 0), edit_customer_path(customer) %>
-            <%= link_to image_tag("icon_delete.png", :border => 0), customer, :confirm => 'Are you sure?', :method => :delete %>
-          </div>
-        </td>
+        <th><%= Customer.human_attribute_name(:firstName) %></th>
+        <th><%= Customer.human_attribute_name(:lastName) %></th>
+        <th><%= Customer.human_attribute_name(:landlinePhone) %></th>
+        <th><%= Customer.human_attribute_name(:mobilePhone) %></th>
+        <th><%= Customer.human_attribute_name(:email) %></th>
+        <th colspan="1"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<%= will_paginate @customers %>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.firstName %></td>
+          <td><%= customer.lastName %></td>
+          <td><%= customer.landlinePhone %></td>
+          <td><%= customer.mobilePhone %></td>
+          <td><%= customer.email %></td>
+          <td class="controls">
+            <div class="controls">
+              <!--
+              <div class="btn_show">
+                <%= image_tag("icon_show.png", :border => 0) %>
+              </div>
+              -->
+              <%= link_to image_tag("icon_show.png", :border => 0, :id=>"btn_show"), customer %>
+              <%= link_to image_tag("icon_edit.png", :border => 0), edit_customer_path(customer) %>
+              <%= link_to image_tag("icon_delete.png", :border => 0), customer, :confirm => 'Are you sure?', :method => :delete %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @customers %>
+</div>
 
+<div id="split_dynamic">
 
+</div>
 

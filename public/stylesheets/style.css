@@ -10,13 +10,24 @@
 #header small{
 	font-family: arial, helvetica, sans-serif;
 	color: green;
-	font-size: normal;
+	font-size: medium;
 	font-style:italic;
 }
 
 
 
 
+
+
+/* Special divs needed when you want to split the screen */
+#split_main {
+    border: 1px solid red;
+    float: left;
+}
+#split_dynamic {
+    border: 1px solid black;
+    float: right;
+}
 
 /* Navigation */
 
@@ -80,7 +91,7 @@
   margin: 10px 0px;
   padding:15px 10px 15px 50px;
   background-repeat: no-repeat;
-  background-position: 10px center;
+  background-position: center;
 }
 .flash_notice {
   color: #4F8A10;
@@ -122,7 +133,7 @@ tr.even {
 }
 
 table{
-  border: "0";
+  border: none;
 }
 
 
@@ -202,4 +213,8 @@ table.items td {
   border-bottom: 1px solid black;  
   padding-right: 5px;
   padding-left: 5px;
+}
+
+div.btn_show {
+    display: inline;
 }
