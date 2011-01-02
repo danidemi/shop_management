@@ -1,16 +1,10 @@
 <% content_for :head do %>
+  <%= javascript_include_tag ['jquery.ui.datepicker-it'] %>
   <script type="text/javascript">
+
+
     function newMeeting(start, end){
       document.location = "/worksheets/new_meeting?" + "start=" + start + "&end=" + end;
-    }
-
-    /*
-    $j(function() {
-      $j( "#datepicker" ).datepicker("option", "dateFormat", "yy-mm-dd");
-    });
-     */
-    function goTo(selectedDate){
-
     }
 
     $j(function() {
@@ -20,86 +14,91 @@
         changeMonth: true,
         changeYear: true,
         onSelect: function(selectedDate){
-          window.location='worksheets?date=' + selectedDate;
+          window.location='/worksheets?date=' + selectedDate;
         }
       });
     });
 
-    /*
-    $j(document).ready(function(){
-      $j(function() {
-        $j( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
-      });
-    });
-     */
   </script>
+  <style TYPE="text/css">
+    #datepicker{
+      float:left;
+      margin: 4px;
+    }
+    #datepicker_div{
+      float: left;
+      margin: 4px;
+    }
+  </style>
 <% end %>
 
-<h2 id="month">  
-  <%= link_to image_tag("icon_previous.png", :border => 0), :action => "worksheet", :date => (@date.-1).strftime("%Y-%m-%d") %>
-  <%= l @date %>
-  <%= link_to image_tag("icon_next.png", :border => 0), :action => "worksheet", :date => (@date.+1).strftime("%Y-%m-%d") %>
-</h2>
+<h1>
+  <%= t('worksheet.today_meetings', :date => l(@date)) %>
+</h1>
 
 
 <div id="datepicker">
 
 </div>
 
-<table id="worksheet">
+<div id="datepicker_div">
+  <table id="worksheet">
 
-  <thead>
-  <th></th>
-  <% @worksheet.operators.each do |operator| %>
-    <% if operator.id %>
-      <th><%= operator.first_name %> <%= operator.last_name %></th>
-    <% else %>
-      <th><%= t('meeting.no_operator') %></th>
+    <thead>
+    <th></th>
+    <% @worksheet.operators.each do |operator| %>
+      <% if operator.id %>
+        <th><%= operator.first_name %> <%= operator.last_name %></th>
+      <% else %>
+        <th><%= t('meeting.no_operator') %></th>
+      <% end %>
     <% end %>
-  <% end %>
-</thead>
+    </thead>
 
-<tbody>
-  <% @worksheet.time_intervals.count.times{ |j|
-    time_interval = @worksheet.time_intervals[j] %>
-    <tr>
+    <tbody>
+      <% @worksheet.time_intervals.count.times{ |j|
+        time_interval = @worksheet.time_intervals[j] %>
+        <tr>
 
   <%# Time interval cell %>
-      <td>
-        <div class="time">
-          <%= time_interval[:start].strftime("%H:%M") %>&nbsp;-&nbsp;<%= time_interval[:end].strftime("%H:%M") %>
-          <%= link_to_function image_tag("icon_new_small.png", :border => 0), "newMeeting('#{time_interval[:start]}','#{time_interval[:end]}')" %>
-        </div>
-      </td>
+          <td>
+            <div class="time">
+              <%= time_interval[:start].strftime("%H:%M") %>&nbsp;-&nbsp;<%= time_interval[:end].strftime("%H:%M") %>
+              <%= link_to_function image_tag("icon_new_small.png", :border => 0), "newMeeting('#{time_interval[:start]}','#{time_interval[:end]}')" %>
+            </div>
+          </td>
 
-      <% @worksheet.operators.count.times{ |i| %>
-        <td>
-          <% meetings = @worksheet.meetings_for(i, j) %>
-          <% if meetings
-            meetings.each do |meeting| %>
-              <div class="<%= meeting.alerted? ? :meeting_alerted : :meeting_unalerted %>">
-                <div>
-                  <%= link_to image_tag("icon_show_small.png", :border => 0), meeting_path(meeting) %>
-                </div>
-                <div>
-                  <%= meeting.start.strftime("%H:%M") %>&nbsp;-&nbsp;<%= meeting.end.strftime("%H:%M") %>
-                </div>
-                <div>
-                  <%= meeting.customer.firstName %>&nbsp;<%= meeting.customer.lastName %>
-                </div>
-                <div>
-                  <%= meeting.notes %>
-                </div>
-              </div>
-            <% end %>
-          <% else %>
-            &nbsp;
-          <% end %>
-        </td>
+          <% @worksheet.operators.count.times{ |i| %>
+            <td>
+              <% meetings = @worksheet.meetings_for(i, j) %>
+              <% if meetings
+                meetings.each do |meeting| %>
+                  <div class="<%= meeting.alerted? ? :meeting_alerted : :meeting_unalerted %>">
+                    <div>
+                      <%= link_to image_tag("icon_show_small.png", :border => 0), meeting_path(meeting) %>
+                    </div>
+                    <div>
+                      <%= meeting.start.strftime("%H:%M") %>&nbsp;-&nbsp;<%= meeting.end.strftime("%H:%M") %>
+                    </div>
+                    <div>
+                      <%= meeting.customer.firstName %>&nbsp;<%= meeting.customer.lastName %>
+                    </div>
+                    <div>
+                      <%= meeting.notes %>
+                    </div>
+                  </div>
+                <% end %>
+              <% else %>
+                &nbsp;
+              <% end %>
+            </td>
+          <% } %>
+
+        </tr>
       <% } %>
+    </tbody>
 
-    </tr>
-  <% } %>
-</tbody>
+  </table>
 
-</table>
+</div>
+

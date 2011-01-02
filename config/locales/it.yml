@@ -19,7 +19,9 @@ it:
   application_credits: "Studio Ingegneria Demichelis"
 
   # Worsheet
-  worksheet: "Agenda Quotidiana"
+  worksheet:
+    title: "Agenda Quotidiana"
+    today_meetings: "Appuntamenti del %{date}"
 
   # Log In / Log out Box
   login_log_in: "Log In"
@@ -59,7 +61,7 @@ it:
       correctly_created: "L'operatore è stato creato correttamente"
       correctly_updated: "L'operatore è stato aggiornato correttamente"
       correctly_removed: "L'operatore è stato rimosso con successo"
-    error
+    error:
       cannot_remove_self: "Non puoi rimuovere il tuo stesso account"
 
   # Activerecords
