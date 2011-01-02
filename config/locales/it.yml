@@ -124,6 +124,7 @@ it:
         landlinePhone: "Numero Rete Fissa"
         mobilePhone: "Cellulare"
         email: "E-mail"
+        note: "Note"
       meeting:
         company: "Azienda"
         customer: "Cliente"

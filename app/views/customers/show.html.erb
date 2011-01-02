@@ -26,3 +26,8 @@
   <b><%= Customer.human_attribute_name(:email) %>:</b>
   <%= @customer.email %>
 </p>
+
+<p>
+  <b><%= Customer.human_attribute_name(:note) %>:</b>
+  <%= nl2br(@customer.note).html_safe %>
+</p>
