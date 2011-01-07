@@ -18,6 +18,24 @@ it:
   application_title: "Appuntamentando.com"
   application_credits: "Studio Ingegneria Demichelis"
 
+  # Administration
+  administration:
+    title: "Amministrazione"
+    customers:
+      csv:
+        headers:
+          first_name: "Nome"
+          last_name: "Cognome"
+          landline_phone: "Telefono fisso"
+          mobile_phone: "Cellulare"
+          email: "Email"
+          notes: "Note"
+      import:
+        title: "Importazione elenco clienti"
+        label: "Scegli il file che contiene l'elenco di clienti"
+        submit: "Importa"
+        success: "Elenco clienti correttamente importato"
+
   # Worsheet
   worksheet:
     title: "Agenda Quotidiana"

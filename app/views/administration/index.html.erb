@@ -1,0 +1,11 @@
+<h1><%=t 'administration.title'%></h1>
+<h2><%=t 'administration.customers.import.title'%></h2>
+<div>
+  <%=t 'administration.customers.import.label'%>
+
+  <%= form_tag({:action => :customers_upload}, :multipart => true) do %>
+    <%= file_field_tag 'customers' %>
+    <%= submit_tag t('administration.customers.import.submit') %>
+  <% end %>
+
+</div>

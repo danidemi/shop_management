@@ -29,6 +29,10 @@ ShopManagement::Application.routes.draw do
   # Cron
   match 'cron/send_alerts/' => 'cron#send_alerts'
 
+  # Administration
+  match 'admin' => 'administration#index'
+  match 'admin/customers_upload' => 'administration#customers_upload'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
