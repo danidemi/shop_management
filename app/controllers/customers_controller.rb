@@ -29,10 +29,10 @@ class CustomersController < ApplicationController
         .joins(:company) \
         .where(Company.table_name => {:id => current_operator.company.id}) \
         .where(["firstName LIKE ? OR lastName LIKE ?", "%" + @search.term + "%", "%" + @search.term + "%"]) \
-        .paginate :page => params[:page], :order => 'created_at ASC', :per_page => 10
+        .paginate :page => params[:page], :order => 'lastName, firstName, created_at ASC', :per_page => 10
     else
       @customers = Customer.joins(:company).where(Company.table_name => {:id => current_operator.company.id}) \
-      .paginate :page => params[:page], :order => 'created_at ASC', :per_page => 10
+      .paginate :page => params[:page], :order => 'lastName, firstName, created_at ASC', :per_page => 10
     end
     
 
