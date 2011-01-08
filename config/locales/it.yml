@@ -34,7 +34,10 @@ it:
         title: "Importazione elenco clienti"
         label: "Scegli il file che contiene l'elenco di clienti"
         submit: "Importa"
-        success: "Elenco clienti correttamente importato"
+        outcome: "Risultato importazione file clienti: %{succeded} caricati correttamente, %{failed} non caricati."
+        log:
+          success: "Riga %{counter}: cliente %{customer} importato correttamente"
+          fail: "Riga %{counter}: cliente %{customer} NON importato: %{errors}"
 
   # Worsheet
   worksheet:

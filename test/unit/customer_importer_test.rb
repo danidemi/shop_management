@@ -4,6 +4,35 @@ require 'customer_importer'
 
 class CustomerImporterTest < ActiveSupport::TestCase
 
+  test "should import a real file" do
+    I18n.locale = :it
+    csv_file = File.new(File.dirname(File.expand_path(__FILE__)) + "/customer_importer_real_test_it.csv", "r")
+    importer = CustomerImporter.new
+    importer.csv=csv_file
+
+    succededs = 0
+    failures = 0
+    progressive = 0
+    
+    company_id = Company.find(:all)[0].id
+    assert_not_nil(company_id)
+
+    importer.for_each do |customer|
+      progressive = progressive + 1
+      customer.company_id = company_id
+      if customer.save then
+        succededs = succededs + 1
+      else
+        failures = failures + 1
+        #puts customer.errors.to_s
+      end
+    end
+
+    assert_equal(2, progressive);
+    assert_equal(0, failures);
+
+  end
+
   test "should go on even when there are errors" do
     I18n.locale = :ch
     importer = CustomerImporter.new

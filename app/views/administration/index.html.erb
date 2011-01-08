@@ -1,5 +1,16 @@
+<%if @log%>
+  <div id="log" style="border: 1px solid blue">
+    <ul>
+      <%@log.each do |log_item|%>
+        <li><%=log_item%></li>
+      <%end%>
+    </ul>
+  </div>
+<%end%>
+
 <h1><%=t 'administration.title'%></h1>
 <h2><%=t 'administration.customers.import.title'%></h2>
+
 <div>
   <%=t 'administration.customers.import.label'%>
 
@@ -9,3 +20,4 @@
   <% end %>
 
 </div>
+
