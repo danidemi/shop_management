@@ -70,7 +70,9 @@ class MeetingsController < ApplicationController
   # GET /meetings/new
   # GET /meetings/new.xml
   def new
-		@customers = Customer.joins(:company).where(Company.table_name => {:id => current_operator.company.id})
+		@customers = Customer.joins(:company) \
+      .where(Company.table_name => {:id => current_operator.company.id}) \
+      .order("lastName ASC, firstName ASC")
 		@operators = Operator.joins(:company).where(Company.table_name => {:id => current_operator.company.id})
 
 		@meeting = Meeting.new
