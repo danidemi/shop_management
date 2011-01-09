@@ -14,9 +14,19 @@ GIT
       activesupport (~> 3.0)
       daemons
 
+GIT
+  remote: git://github.com/sandal/prawn
+  revision: 89ba0ebf7ac3705756330a25ab4c88e4c71e36d8
+  tag: 0.10.2
+  submodules: true
+  specs:
+    prawn (0.10.2)
+      pdf-reader (>= 0.8.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
+    Ascii85 (1.0.0)
     abstract (1.0.0)
     actionmailer (3.0.3)
       actionpack (= 3.0.3)
@@ -58,6 +68,8 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     mysql2 (0.2.6)
+    pdf-reader (0.9.1)
+      Ascii85 (>= 0.9)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -93,6 +105,7 @@ DEPENDENCIES
   delayed_job!
   fastercsv (= 1.5.3)
   mysql2
+  prawn!
   rails (= 3.0.3)
   sqlite3-ruby (= 1.2.5)
   will_paginate (~> 3.0.pre2)

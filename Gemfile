@@ -31,4 +31,5 @@ gem "will_paginate", "~> 3.0.pre2"
 # and rake tasks are available in development mode:
 group :development, :test do
   #gem 'webrat'
+    gem 'prawn', :git => "git://github.com/sandal/prawn", :tag => '0.10.2', :submodules => true
 end
