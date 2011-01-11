@@ -1,6 +1,8 @@
 <%= link_to image_tag("icon_edit.png", :border => 0), edit_meeting_path(@meeting) %>
 <%= link_to image_tag("icon_back.png", :border => 0), meetings_path %>
+<!--
 <%= link_to image_tag("icon_reminder.png", :border => 0), :controller => :meetings, :action => :send_reminder, :id => @meeting.id %>
+-->
 
 <p>
   <b><%=Customer.model_name.human%>:</b>

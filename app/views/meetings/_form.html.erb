@@ -5,54 +5,54 @@
       <h2><%= t('generic.error.form') %></h2>
 
       <ul>
-      <% @meeting.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @meeting.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
 
 
-	<div class="field">
-		<%= form.label :customer %><br />
+  <div class="field">
+    <%= form.label :customer %><br />
     <% if @customers!=nil %>
-		  <%= form.select :customer_id, @customers.collect{|c| [c.firstName + " " + c.lastName, c.id]} %><br />
+      <%= form.select :customer_id, @customers.collect{|c| [c.firstName + " " + c.lastName, c.id]} %><br />
     <% else %>
       <!-- no customers -->
     <% end %>
-	</div>
+  </div>
 
-	<div class="field">
-		<%= form.label :operator %>
+  <div class="field">
+    <%= form.label :operator %>
     <br />
     <% if @operators!=nil %>
-		  <%= form.select \
-            :operator_id, \
-            @operators.collect{ |opr| [opr.first_name + " " + opr.last_name, opr.id]}, \
-            {:include_blank => t("meeting.no_operator")} %>
+      <%= form.select \
+        :operator_id, \
+        @operators.collect{ |opr| [opr.first_name + " " + opr.last_name, opr.id]}, \
+        {:include_blank => t("meeting.no_operator")} %>
     <% else %>
       <!-- no operators -->
     <% end %>
     <br />
-	</div>
+  </div>
 
-	<div class="field">
-		<%= form.label :start %><br />
-		<%= form.datetime_select :start %><br />
-	</div>
+  <div class="field">
+    <%= form.label :start %><br />
+    <%= form.datetime_select :start %><br />
+  </div>
 
-	<div class="field">
-		<%= form.label :end %><br />
-		<%= form.datetime_select :end %><br />
-	</div>
+  <div class="field">
+    <%= form.label :end %><br />
+    <%= form.datetime_select :end %><br />
+  </div>
 
-	<div class="field">
-		<%= form.label :notes %><br />
-		<%= form.text_area :notes %><br />
-	</div>
+  <div class="field">
+    <%= form.label :notes %><br />
+    <%= form.text_area :notes %><br />
+  </div>
 
-	<div class="actions">
-		<%= form.submit t("generic_button_ok") %>
-	</div>
+  <div class="actions">
+    <%= form.submit t("generic_button_ok") %>
+  </div>
 <% end %>

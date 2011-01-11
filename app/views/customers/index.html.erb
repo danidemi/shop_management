@@ -10,7 +10,6 @@
 
 <h1><%=Customer.human_name(:count =>2)%></h1>
 
-<div id="split_main">
   <%= link_to image_tag("icon_new.png", :border => 0), new_customer_path %>
 
   <%= form_for :search, :url => customers_path, :html => {:method => :get} do |f| %>
@@ -54,9 +53,11 @@
     </tbody>
   </table>
   <%= will_paginate @customers %>
+<!--
+<div id="split_main">
 </div>
 
 <div id="split_dynamic">
-
 </div>
+-->
 

@@ -1,15 +1,6 @@
-/*
-Color 1, kind of white: #FFFFFF
-Color 2, kind of light blue hue: #83D8F8
-Color 3, kind of medium blue hue: #00AFF0
-Color 4, kind of dark blue hue: #4B465A
-Color 5, kind of green: #87C80A
-*/
+/* scaffold */
 
-body { 
-	background-color: #83D8F8; 
-	color: #FFFFFF; 
-}
+body { background-color: #fff; color: #333; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -17,30 +8,78 @@ body, p, ol, ul, td {
   line-height: 18px;
 }
 
-
-/** 
-*Header
-*Is the div that contains the site identity, namely the logo and the tag line. 
-*/
-
-#header {
-    color: #00AFF0; /*#4B465A;*/
-    background-color: #83D8F8; 
-    font-size: large;
-    font-weight: bold;
-    float: left;
-    text-align: center;
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
 }
 
-#header a{
-	color: #00AFF0; /*#4B465A;*/
-	text-decoration: none;
+/*
+a img { border: 0px; }
+a:hover img {
+    border: 0px;
+    color: white;
+    background-color:white;
+}
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+*/
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+
+/* Header */
+
+#header {
+    font-family: arial, helvetica, sans-serif;
+    color: green;
+    font-size: large;
+    float: left;
 }
 
 #header small{
-    font-size: small;
+    font-family: arial, helvetica, sans-serif;
+    color: green;
+    font-size: medium;
     font-style:italic;
-    font-weight: bolder;
 }
 
 
@@ -49,7 +88,6 @@ body, p, ol, ul, td {
 
 
 /* Special divs needed when you want to split the screen */
-/*
 #split_main {
     border: 0px none;
     float: left;
@@ -58,24 +96,12 @@ body, p, ol, ul, td {
     border: 1px solid black;
     float: right;
 }
-*/
 
 /* Navigation */
 
 #operator_nav {
     text-align: right;
     float: right;
-    color: #4B465A;
-    text-decoration: none;
-}
-
-#operator_nav a:HOVER{
-    text-decoration: underline;
-}
-
-#operator_nav a{
-    text-decoration: none;
-    color: #4B465A;
 }
 
 #operator_nav.login {
@@ -86,36 +112,21 @@ body, p, ol, ul, td {
 
 
 
-/* 
-Menu is a menu with the following html structure.
-<div id="menu_container">
-  <ul id="menu_list">
-    <li><a href="http://appuntamentando.com/operators">Operatori</a></li>
-    <li><a href="http://appuntamentando.com/customers">Clienti</a></li>
-    <li><a href="http://appuntamentando.com/meetings">Appuntamenti</a></li>
-    <li><a href="http://appuntamentando.com/worksheets">Agenda Quotidiana</a></li>
-    <li><a href="http://appuntamentando.com/admin">Amministrazione</a></li>
-  </ul>
-</div> 
-*/
+/* Menu */
 
 #menu_container {
     float: none;
     clear: both;
-    margin-bottom: 0px;
 }
 
 #menu_container ul {
-    background-color: #83D8F8;
-    color: white;
-    border-bottom: 1px solid #FFFFFF;
     padding-left: 0;
     margin-left: 0;
+    background-color: green;
+    color: white;
     float: left;
     width: 100%;
-    /*
     font-family: arial, helvetica, sans-serif;
-    */    
 }
 
 #menu_container ul li { 
@@ -123,36 +134,17 @@ Menu is a menu with the following html structure.
 }
 
 #menu_container ul li a {
-    float: left;
-    background-color: #FFFFFF;
-    color: #4B465A;
     padding: 0.2em 1em;
-    margin-right: 3px;
+    background-color: #036;
+    color: White;
     text-decoration: none;
-    border-right: 1px solid #00AFF0;
-    border-top: 1px solid #00AFF0;
+    float: left;
+    border-right: 1px solid #fff;
 }
 
 #menu_container ul li a:hover {
-    background-color: #4B465A;
-    color: #FFFFFF;
-}
-
-/** 
-*Content
-*Is the div that contains the main content. 
-*/
-#content {
-	background-color: #FFFFFF;
-	color: #4B465A;
-    border-right: 1px solid #00AFF0;
-    border-bottom: 1px solid #00AFF0;	
-    clear: both;  
-	position:relative;
-	top:-14px;
-	left:0px;
-    margin: 0px;
-    padding: 10px;  
+    background-color: #369;
+    color: #fff;
 }
 
 
@@ -191,7 +183,12 @@ Menu is a menu with the following html structure.
 
 
 
+/* Content */
 
+#content {
+    clear: both;
+
+}
 
 
 
@@ -200,11 +197,11 @@ Menu is a menu with the following html structure.
 /* Tables */
 
 tr.odd {
-    background-color: #FFFFFF;
+    background-color: white;
 }
 
 tr.even {
-    background-color: #83D8F8;
+    background-color: white;
 }
 
 table{
@@ -220,28 +217,27 @@ table{
 /* Worksheet */
 
 #worksheet {
-    border: 2px solid #4B465A;
+    border: 2px solid black;
     border-collapse:collapse;
-    background: #FFFFFF;
 }
 
 #worksheet td {
     vertical-align: top;
-    border: 1px solid #4B465A;
+    border: 1px solid black;
     padding:2px;
     width:100px;
 }
 
 #worksheet .meeting_alerted {
-    background-color: #87C80A;
-    border: 1px solid #4B465A;
+    background-color: #DFD;
+    border: 1px solid green;
     margin: 2px;
     padding: 2px;
 }
 
 #worksheet .meeting_unalerted {
-    background-color: #83D8F8;
-    border: 1px solid #4B465A;
+    background-color: #CCC;
+    border: 1px solid gray;
     margin: 2px;
     padding: 2px;
 }
@@ -250,22 +246,23 @@ table{
     margin: 2px;
     padding: 2px;
     font-family: monospace;
-    font-size: small;
 }
 
 
 
-/* Extra style to be applied on a hovering element */
-.hovering {
-    background-color: #4B465A;
-    color: #FFFFFF;
-}
+
 
 /* The table meant to show a list of editable items */
 table.items {
     border-width: 0px;
     border-style: none;
     border-collapse: collapse;
+}
+
+/* Extra style to be applied on a hovering element */
+.hovering {
+    background-color: #33F;
+    color: white;
 }
 
 table.items td.controls {
