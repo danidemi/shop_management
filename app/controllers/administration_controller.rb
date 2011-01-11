@@ -6,7 +6,13 @@ class AdministrationController < ApplicationController
   end
 
   def customers_upload
+    logger.info "Received CSV customer file."
+
+    logger.info "Retrieving CSV customer file from request."
     customers_file = params[:customers]
+    logger.info "CSV customer file retrieved."
+
+    logger.info "CSV customer file #{customers_file.inspect}"
     csv_file = File.new(customers_file.tempfile.path, "r")
 
     importer = CustomerImporter.new
